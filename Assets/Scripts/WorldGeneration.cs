@@ -17,7 +17,7 @@ public class WorldGeneration : EditorWindow {
     /*[SerializeField] [Range(1, 100)] /**/private int m_numberOfXTiles = 20;
     /*[SerializeField] [Range(1, 100)] /**/private int m_numberOfYTiles = 20;
     
-    /*[SerializeField] [Range(0.1f, 10f)] /**/private float m_sizeOfATile = 20;
+    /*[SerializeField] [Range(0.1f, 10f)] /**/private float m_sizeOfATile = 0.5f;
     /*[SerializeField] /**/private Vector3 m_center = Vector3.zero;
 
     /*[Header(" ")] [Header("Tiles")]/**/

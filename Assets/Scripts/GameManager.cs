@@ -1,4 +1,16 @@
+using System;
+using Ingredients;
 using UnityEngine;
+using Random = UnityEngine.Random;
+
+namespace Ingredients {
+    public enum IngredientList {
+        Egg = 0,
+        Flour = 1,
+        Sugar = 2,
+        Chocolate = 3,
+    }
+}
 
 public class GameManager : MonoBehaviour {
 
@@ -10,6 +22,21 @@ public class GameManager : MonoBehaviour {
     [SerializeField] [Tooltip("For testing purposes only")] private int m_wallYIndex = 0;
     
     [SerializeField] private SOTileValues m_tileValues = null;
+
+    [SerializeField] private GameObject[] m_ingredientsPrefabs;
+
+    [SerializeField] private WallsToBuild[] m_firstWallsToBuild;
+
+    private bool[,] m_walls = null;
+    
+
+    [Serializable]
+    private struct WallsToBuild {
+        public bool isHorizontal;
+        public int otherAxeCoordinate;
+        public int begin;
+        public int end;
+    }
     
     
 
@@ -32,6 +59,23 @@ public class GameManager : MonoBehaviour {
         }
  
         singleton = this;
+
+        m_walls = new bool[m_tileValues.m_numberOfXTiles, m_tileValues.m_numberOfYTiles];
+    }
+
+    private void Start() {
+        
+        foreach (WallsToBuild walls in m_firstWallsToBuild) {
+            if(walls.isHorizontal) BuildLineOfWallsX(walls.otherAxeCoordinate, walls.begin, walls.end);
+            else BuildLineOfWallsY(walls.otherAxeCoordinate, walls.begin, walls.end);
+        }
+    }
+
+    private void OnValidate() {
+        if (m_ingredientsPrefabs.Length != Enum.GetNames(typeof(IngredientList)).Length) {
+            Debug.LogWarning("Don't change the length of this array, there's nothing more or less to show !");
+            m_ingredientsPrefabs = new GameObject[Enum.GetNames(typeof(IngredientList)).Length];
+        }
     }
 
     [ContextMenu("Bob, build !")]
@@ -39,13 +83,44 @@ public class GameManager : MonoBehaviour {
         BuildAWall(m_wallXIndex, m_wallYIndex);
     }
 
+    private void BuildLineOfWallsX(int p_y, int p_begin, int p_end) {
+        for (int i = 0; i <= Mathf.Abs(p_end - p_begin); i++) {
+            BuildAWall(p_begin + i, p_y);
+        }
+    }
+
+    private void BuildLineOfWallsY(int p_x, int p_begin, int p_end) {
+        for (int i = 0; i <= Mathf.Abs(p_end - p_begin); i++) {
+            BuildAWall(p_x, p_begin + i);
+        }
+    }
+
     private void BuildAWall(int p_x, int p_y) {
+        if (m_walls[p_x, p_y]) {
+            Debug.LogWarning($"there's already a wall here ! {p_x} {p_y}", this);
+            return;
+        }
+
+        m_walls[p_x, p_y] = true;
         float posX;
         float posY;
         
         IndexesToPositions(p_x, p_y, out posX, out posY);
 
         Instantiate(m_prefabWall, new Vector3(posX, m_tileValues.m_center.y, posY), m_prefabWall.transform.rotation);
+    }
+
+    [ContextMenu("Raoul, eat !")]
+    public void Raoul() {
+        SpawnIngredient(Random.Range(0,m_tileValues.m_numberOfXTiles), Random.Range(0,m_tileValues.m_numberOfYTiles), (IngredientList)Random.Range(0,4));
+    }
+
+    private void SpawnIngredient(int p_x, int p_y, Ingredients.IngredientList p_ingredient) {
+        float posX;
+        float posY;
+        IndexesToPositions(p_x, p_y, out posX, out posY);
+
+        Instantiate(m_ingredientsPrefabs[Random.Range(0, m_ingredientsPrefabs.Length)], new Vector3(posX, m_tileValues.m_center.y, posY), m_prefabWall.transform.rotation);
     }
 
     private void IndexesToPositions(int p_x, int p_y, out float x, out float y) {
