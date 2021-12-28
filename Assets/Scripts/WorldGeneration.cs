@@ -25,7 +25,7 @@ public class WorldGeneration : EditorWindow {
     /*[SerializeField] /**/private GameObject m_prefabBlackTile = null;
 
     private Transform m_parentToObjects = null;
-    private int m_spaceWidth = 5;
+    private int m_spaceWidth = 20;
     private GameManager m_gameManager = null;
 
 
