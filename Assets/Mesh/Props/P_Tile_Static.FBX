@@ -9,10 +9,10 @@ FBXHeaderExtension:  {
 		Year: 2021
 		Month: 12
 		Day: 28
-		Hour: 11
-		Minute: 51
-		Second: 12
-		Millisecond: 720
+		Hour: 20
+		Minute: 34
+		Second: 10
+		Millisecond: 987
 	}
 	Creator: "FBX SDK/FBX Plugins version 2019.2"
 	SceneInfo: "SceneInfo::GlobalInfo", "UserData" {
@@ -34,13 +34,13 @@ FBXHeaderExtension:  {
 			P: "Original|ApplicationVendor", "KString", "", "", "Autodesk"
 			P: "Original|ApplicationName", "KString", "", "", "3ds Max"
 			P: "Original|ApplicationVersion", "KString", "", "", "2020"
-			P: "Original|DateTime_GMT", "DateTime", "", "", "28/12/2021 10:51:12.718"
+			P: "Original|DateTime_GMT", "DateTime", "", "", "28/12/2021 19:34:10.985"
 			P: "Original|FileName", "KString", "", "", "C:\Users\Max-Martin Sherie\Desktop\MINT\3D\Exports\P_Tile_Static.FBX"
 			P: "LastSaved", "Compound", "", ""
 			P: "LastSaved|ApplicationVendor", "KString", "", "", "Autodesk"
 			P: "LastSaved|ApplicationName", "KString", "", "", "3ds Max"
 			P: "LastSaved|ApplicationVersion", "KString", "", "", "2020"
-			P: "LastSaved|DateTime_GMT", "DateTime", "", "", "28/12/2021 10:51:12.718"
+			P: "LastSaved|DateTime_GMT", "DateTime", "", "", "28/12/2021 19:34:10.985"
 			P: "Original|ApplicationActiveProject", "KString", "", "", "C:\Users\Max-Martin Sherie\Documents\3ds Max 2020"
 			P: "Original|ApplicationNativeFile", "KString", "", "", "C:\Users\Max-Martin Sherie\Desktop\MINT\3D\MINT ASSETS.max"
 		}
@@ -49,10 +49,10 @@ FBXHeaderExtension:  {
 GlobalSettings:  {
 	Version: 1000
 	Properties70:  {
-		P: "UpAxis", "int", "Integer", "",1
+		P: "UpAxis", "int", "Integer", "",2
 		P: "UpAxisSign", "int", "Integer", "",1
-		P: "FrontAxis", "int", "Integer", "",2
-		P: "FrontAxisSign", "int", "Integer", "",1
+		P: "FrontAxis", "int", "Integer", "",1
+		P: "FrontAxisSign", "int", "Integer", "",-1
 		P: "CoordAxis", "int", "Integer", "",0
 		P: "CoordAxisSign", "int", "Integer", "",1
 		P: "OriginalUpAxis", "int", "Integer", "",2
@@ -77,7 +77,7 @@ GlobalSettings:  {
 
 Documents:  {
 	Count: 1
-	Document: 2565098629216, "", "Scene" {
+	Document: 2567046738064, "", "Scene" {
 		Properties70:  {
 			P: "SourceObject", "object", "", ""
 			P: "ActiveAnimStackName", "KString", "", "", ""
@@ -198,12 +198,12 @@ Definitions:  {
 ;------------------------------------------------------------------
 
 Objects:  {
-	Geometry: 2565087402272, "Geometry::", "Mesh" {
+	Geometry: 2567046697616, "Geometry::", "Mesh" {
 		Properties70:  {
 			P: "Color", "ColorRGB", "Color", "",0.341176470588235,0.882352941176471,0.776470588235294
 		}
 		Vertices: *24 {
-			a: 0,-19.6850395202637,0,19.6850395202637,-19.6850395202637,0,0,0,0,19.6850395202637,0,0,1.24508571624756,-1.24508571624756,0.136470437049866,1.24508571624756,-18.4399528503418,0.136470437049866,18.4399528503418,-18.4399528503418,0.136470437049866,18.4399528503418,-1.24508571624756,0.136470437049866
+			a: -29.5275592803955,4.81065035273787e-06,29.5275592803955,29.5275592803955,4.81065035273787e-06,29.5275592803955,-29.5275592803955,-4.81065035273787e-06,-29.5275592803955,29.5275592803955,-4.81065035273787e-06,-29.5275592803955,-25.7923011779785,0.409407109022141,-25.7923011779785,-25.7923011779785,0.409415513277054,25.7922992706299,25.7922992706299,0.409415513277054,25.7922992706299,25.7922992706299,0.409407109022141,-25.7923011779785
 		} 
 		PolygonVertexIndex: *20 {
 			a: 5,6,7,-5,2,0,5,-5,0,1,6,-6,1,3,7,-7,3,2,4,-8
@@ -218,7 +218,7 @@ Objects:  {
 			MappingInformationType: "ByPolygonVertex"
 			ReferenceInformationType: "Direct"
 			Normals: *60 {
-				a: 0,0,1,0,0,1,0,0,1,0,0,1,-0.10895474255085,0,0.994046747684479,-0.10895474255085,0,0.994046747684479,-0.108954735100269,0,0.994046628475189,-0.108954727649689,0,0.994046628475189,0,-0.108954660594463,0.994046747684479,0,-0.108954653143883,0.994046747684479,0,-0.108954660594463,0.994046747684479,0,-0.108954660594463,0.994046747684479,0.108954668045044,0,0.994046747684479,0.108954660594463,0,0.994046747684479,0.108954660594463,0,0.994046747684479,0.108954660594463,0,0.994046747684479,0,0.10895474255085,0.994046747684479,0,0.10895474255085,0.994046747684479,0,0.108954727649689,0.994046628475189,0,0.108954735100269,0.994046628475189
+				a: 0,1,-1.6292177917876e-07,0,1,-1.6292177917876e-07,0,1,-1.6292177917876e-07,0,1,-1.6292177917876e-07,-0.108954712748528,0.994046747684479,-1.62006969617323e-07,-0.108954720199108,0.994046747684479,-1.62006983828178e-07,-0.108954712748528,0.994046747684479,-1.62006969617323e-07,-0.108954720199108,0.994046747684479,-1.62006969617323e-07,0,0.994046747684479,0.108954504132271,0,0.994046747684479,0.108954504132271,0,0.994046747684479,0.10895449668169,0,0.994046747684479,0.108954504132271,0.108954645693302,0.994046747684479,-1.62006884352195e-07,0.108954645693302,0.994046747684479,-1.6200687014134e-07,0.108954638242722,0.994046747684479,-1.6200687014134e-07,0.108954638242722,0.994046747684479,-1.62006855930485e-07,0,0.994046688079834,-0.10895486921072,0,0.994046688079834,-0.108954861760139,0,0.994046628475189,-0.108954854309559,0,0.994046628475189,-0.108954861760139
 			} 
 			NormalsW: *20 {
 				a: 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
@@ -261,15 +261,14 @@ Objects:  {
 			}
 		}
 	}
-	Model: 2565092949456, "Model::Tile_Static", "Mesh" {
+	Model: 2568267352624, "Model::Tile_Static", "Mesh" {
 		Version: 232
 		Properties70:  {
-			P: "PreRotation", "Vector3D", "Vector", "",-90,-0,0
-			P: "RotationActive", "bool", "", "",1
 			P: "InheritType", "enum", "", "",1
 			P: "ScalingMax", "Vector3D", "Vector", "",0,0,0
-			P: "GeometricTranslation", "Vector3D", "Vector", "",-9.84251976013184,9.84251976013184,0
 			P: "DefaultAttributeIndex", "int", "Integer", "",0
+			P: "Lcl Translation", "Lcl Translation", "", "A",0,7.62939453125e-06,0
+			P: "Lcl Rotation", "Lcl Rotation", "", "A",90.0000025044781,-0,0
 			P: "MaxHandle", "int", "Integer", "UH",2
 		}
 		Shading: T
@@ -283,8 +282,8 @@ Objects:  {
 Connections:  {
 	
 	;Model::Tile_Static, Model::RootNode
-	C: "OO",2565092949456,0
+	C: "OO",2568267352624,0
 	
 	;Geometry::, Model::Tile_Static
-	C: "OO",2565087402272,2565092949456
+	C: "OO",2567046697616,2568267352624
 }
