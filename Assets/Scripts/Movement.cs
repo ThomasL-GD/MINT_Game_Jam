@@ -64,19 +64,17 @@ public class Movement : MonoBehaviour
         }
         
         PlayRunningAnimation();
-        
-        Quaternion targetRotation = Quaternion.LookRotation(p_playerInput);
+
+        Quaternion targetRotation = Quaternion.LookRotation(p_playerInput.normalized*2f);
  
-        if(Quaternion.Angle(transform.rotation,targetRotation) < 15f)
+        if(Quaternion.Angle(transform.rotation,targetRotation) < 5f)
         {
             transform.rotation = targetRotation;
-            transform.rotation *= Quaternion.Euler(Vector3.up);
             return;
         }
         //Rotate smoothly to this target:
         transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, m_rotationSpeed * Time.deltaTime);
 
-        transform.rotation *= Quaternion.Euler(Vector3.up);
     }
     
     private void PlayRunningAnimation()
