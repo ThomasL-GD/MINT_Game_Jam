@@ -732,7 +732,7 @@ MeshCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1399391919}
-  m_Material: {fileID: 13400000, guid: b30f08372e7d87b4c8e16da0ca0d6537, type: 2}
+  m_Material: {fileID: 13400000, guid: a466ec42784cfda4a9fcba3d48415a3a, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4
@@ -908,9 +908,41 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1206794337705537332, guid: 9c1c1f16800c5ed40a5a07b158580da7, type: 3}
+      propertyPath: m_sprintKey
+      value: 32
+      objectReference: {fileID: 0}
+    - target: {fileID: 1206794337705537332, guid: 9c1c1f16800c5ed40a5a07b158580da7, type: 3}
+      propertyPath: m_rotationSpeed
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1206794337705537332, guid: 9c1c1f16800c5ed40a5a07b158580da7, type: 3}
+      propertyPath: m_maxSpeedSprint
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 1206794337705537332, guid: 9c1c1f16800c5ed40a5a07b158580da7, type: 3}
+      propertyPath: m_maxAccelerationSprint
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1206794337705537332, guid: 9c1c1f16800c5ed40a5a07b158580da7, type: 3}
+      propertyPath: m_particleEffectFrequency
+      value: 0.3
+      objectReference: {fileID: 0}
     - target: {fileID: 2736830145490270178, guid: 9c1c1f16800c5ed40a5a07b158580da7, type: 3}
       propertyPath: m_Mass
       value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 3611478383137006019, guid: 9c1c1f16800c5ed40a5a07b158580da7, type: 3}
+      propertyPath: m_Size.y
+      value: 0.04
+      objectReference: {fileID: 0}
+    - target: {fileID: 3886620893690645336, guid: 9c1c1f16800c5ed40a5a07b158580da7, type: 3}
+      propertyPath: m_Size.y
+      value: 0.04
+      objectReference: {fileID: 0}
+    - target: {fileID: 3886620893690645336, guid: 9c1c1f16800c5ed40a5a07b158580da7, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4565178321336382209, guid: 9c1c1f16800c5ed40a5a07b158580da7, type: 3}
       propertyPath: m_Icon
@@ -919,6 +951,10 @@ PrefabInstance:
     - target: {fileID: 4565178321336382209, guid: 9c1c1f16800c5ed40a5a07b158580da7, type: 3}
       propertyPath: m_Name
       value: SpawnSpot
+      objectReference: {fileID: 0}
+    - target: {fileID: 7716368106108728674, guid: 9c1c1f16800c5ed40a5a07b158580da7, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8076915217808495799, guid: 9c1c1f16800c5ed40a5a07b158580da7, type: 3}
       propertyPath: m_Name

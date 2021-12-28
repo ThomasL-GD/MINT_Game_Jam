@@ -177,7 +177,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_maxSpeed: 10
   m_maxAcceleration: 10
+  m_maxSpeedSprint: 10
+  m_maxAccelerationSprint: 10
   m_rotationSpeed: 20
+  m_particuleSystem: {fileID: 2391762862800012434, guid: 6d10e223bf2f1ce47993c1bc62038cb4, type: 3}
+  m_particleEffectFrequency: 0.3
+  m_sprintKey: 0
 --- !u!54 &2736830145490270178
 Rigidbody:
   m_ObjectHideFlags: 0
