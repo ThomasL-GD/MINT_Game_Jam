@@ -24,8 +24,9 @@ public class WorldGeneration : EditorWindow {
     /*[SerializeField] /**/private GameObject m_prefabWhiteTile = null;
     /*[SerializeField] /**/private GameObject m_prefabBlackTile = null;
 
-    private GameObject m_parentToObjects = null;
+    private Transform m_parentToObjects = null;
     private int m_spaceWidth = 5;
+    private GameManager m_gameManager = null;
 
 
     private bool m_alternateBAndW = false;
@@ -50,12 +51,28 @@ public class WorldGeneration : EditorWindow {
         
         Space(m_spaceWidth);
         
-        m_parentToObjects = (GameObject)ObjectField("Parent of every instance", m_parentToObjects, typeof(GameObject), true);
+        m_gameManager = (GameManager)ObjectField("The game manager", m_gameManager, typeof(GameManager), true);
+        
+        Space(m_spaceWidth);
+        
+        m_parentToObjects = (Transform)ObjectField("Parent of every instance", m_parentToObjects, typeof(Transform), true);
         
         Space(m_spaceWidth);
         
         if (GUILayout.Button("Generate")) {
+            if(m_parentToObjects != null) {
+                foreach (Transform child in m_parentToObjects) {
+#if UNITY_EDITOR
+                    UnityEditor.EditorApplication.delayCall += () => {
+                        DestroyImmediate( child.gameObject );
+                    }; 
+#endif
+                }
+            }
+            
             CreateGrid();
+                
+            if (m_gameManager != null)  m_gameManager.SetTileValues(m_numberOfXTiles, m_numberOfYTiles, m_sizeOfATile, m_center); // We give all the values to the GameManager if there's one serialized
         }
         
     }
@@ -66,7 +83,7 @@ public class WorldGeneration : EditorWindow {
             for(int j = 0; j < m_numberOfXTiles; j++) {
                 CreateTile(j,i);
             }
-            m_alternateBAndW = !m_alternateBAndW;
+            if(m_numberOfXTiles%2 == 0)m_alternateBAndW = !m_alternateBAndW;
         }
         
     }
@@ -93,7 +110,7 @@ public class WorldGeneration : EditorWindow {
         //Get prefab object from path
         Object prefab = AssetDatabase.LoadAssetAtPath(prefabPath, typeof(Object));
         //Instantiate the prefab in the scene, as a sibling of current gameObject
-        Object prefabSpawned = PrefabUtility.InstantiatePrefab(prefab, m_parentToObjects.transform);
+        Object prefabSpawned = PrefabUtility.InstantiatePrefab(prefab, m_parentToObjects);
 
         if (prefabSpawned is GameObject) {
             Transform newTransform = ((GameObject) prefabSpawned).transform;
