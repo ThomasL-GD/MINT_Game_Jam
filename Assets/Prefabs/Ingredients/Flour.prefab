@@ -11,6 +11,18 @@ PrefabInstance:
       propertyPath: m_ingredient
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1353668826583928053, guid: ece3e84b6b3121642a2f74c8c8807ac6, type: 3}
+      propertyPath: m_Color.b
+      value: 0.82745105
+      objectReference: {fileID: 0}
+    - target: {fileID: 1353668826583928053, guid: ece3e84b6b3121642a2f74c8c8807ac6, type: 3}
+      propertyPath: m_Color.g
+      value: 0.29411766
+      objectReference: {fileID: 0}
+    - target: {fileID: 1353668826583928053, guid: ece3e84b6b3121642a2f74c8c8807ac6, type: 3}
+      propertyPath: m_Color.r
+      value: 0.21176472
+      objectReference: {fileID: 0}
     - target: {fileID: 5068210258822840768, guid: ece3e84b6b3121642a2f74c8c8807ac6, type: 3}
       propertyPath: m_Name
       value: Flour

@@ -11,7 +11,7 @@ public class RiseWhenBorn : MonoBehaviour {
     private void OnEnable() {
         m_maxTime = GameManager.singleton.m_wallRiseTime;
         m_originalHeight = transform.position.y;
-        m_targetHeightGain = GetComponent<MeshFilter>().mesh.bounds.size.y;
+        m_targetHeightGain = GetComponent<MeshFilter>().mesh.bounds.size.y/2;
     }
 
     private void Update() {

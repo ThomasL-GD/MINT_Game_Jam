@@ -11,6 +11,22 @@ PrefabInstance:
       propertyPath: m_ingredient
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 1353668826583928053, guid: ece3e84b6b3121642a2f74c8c8807ac6, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1353668826583928053, guid: ece3e84b6b3121642a2f74c8c8807ac6, type: 3}
+      propertyPath: m_Color.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1353668826583928053, guid: ece3e84b6b3121642a2f74c8c8807ac6, type: 3}
+      propertyPath: m_Color.r
+      value: 0.78409576
+      objectReference: {fileID: 0}
+    - target: {fileID: 1353668826583928053, guid: ece3e84b6b3121642a2f74c8c8807ac6, type: 3}
+      propertyPath: m_Intensity
+      value: 0.16
+      objectReference: {fileID: 0}
     - target: {fileID: 5068210258822840768, guid: ece3e84b6b3121642a2f74c8c8807ac6, type: 3}
       propertyPath: m_Name
       value: Chocolate
@@ -21,15 +37,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5556939240669977466, guid: ece3e84b6b3121642a2f74c8c8807ac6, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -2.261
       objectReference: {fileID: 0}
     - target: {fileID: 5556939240669977466, guid: ece3e84b6b3121642a2f74c8c8807ac6, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.293
       objectReference: {fileID: 0}
     - target: {fileID: 5556939240669977466, guid: ece3e84b6b3121642a2f74c8c8807ac6, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -5.103
       objectReference: {fileID: 0}
     - target: {fileID: 5556939240669977466, guid: ece3e84b6b3121642a2f74c8c8807ac6, type: 3}
       propertyPath: m_LocalRotation.w
