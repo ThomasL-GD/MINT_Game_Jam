@@ -176,4 +176,8 @@ public class GameManager : MonoBehaviour {
         m_tileValues.m_sizeOfATile = p_sizeOfATile;
         m_tileValues.m_center = p_center;
     }
+
+    private void OnDrawGizmos() {
+        if (m_firstWallsToBuild.Length < 1) return;
+    }
 }

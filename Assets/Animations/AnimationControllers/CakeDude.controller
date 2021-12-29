@@ -81,7 +81,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: CakeDudeAnimationJump
-  m_Speed: 1
+  m_Speed: 0.3
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: -3840751014779960436}
@@ -96,10 +96,10 @@ AnimatorState:
   m_TimeParameterActive: 0
   m_Motion: {fileID: 7400000, guid: 5b723d1c841b125469943b20ba767f9a, type: 2}
   m_Tag: 
-  m_SpeedParameter: Jump Duration
+  m_SpeedParameter: Jump_Duration
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
-  m_TimeParameter: 
+  m_TimeParameter: Jump_Duration
 --- !u!1109 &-1828485460641543734
 AnimatorTransition:
   m_ObjectHideFlags: 1
@@ -123,7 +123,7 @@ AnimatorController:
   m_Name: CakeDude
   serializedVersion: 5
   m_AnimatorParameters:
-  - m_Name: Jump Duration
+  - m_Name: Jump_Duration
     m_Type: 1
     m_DefaultFloat: 1
     m_DefaultInt: 0

@@ -2248,6 +2248,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Oven
       objectReference: {fileID: 0}
+    - target: {fileID: 6154531961532187012, guid: ff5af595f68162a4da3a59d2b92db8fc, type: 3}
+      propertyPath: m_spawnInterval
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6154531961532187012, guid: ff5af595f68162a4da3a59d2b92db8fc, type: 3}
+      propertyPath: m_numberOfCakeToSpawn
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ff5af595f68162a4da3a59d2b92db8fc, type: 3}
 --- !u!4 &437747647 stripped
@@ -8214,24 +8222,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7062822656108116315, guid: 4802c2acf87b8c241a10a20d3a66f01e, type: 3}
   m_PrefabInstance: {fileID: 636560156}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1531723000 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8076915217808495799, guid: 9c1c1f16800c5ed40a5a07b158580da7, type: 3}
-  m_PrefabInstance: {fileID: 1309937834}
-  m_PrefabAsset: {fileID: 0}
---- !u!135 &1531723011
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1531723000}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 1
-  m_Center: {x: 0, y: 0.4, z: 0}
 --- !u!4 &1534124292 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7062822656108116315, guid: 4802c2acf87b8c241a10a20d3a66f01e, type: 3}
@@ -10128,7 +10118,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_chefTransform: {fileID: 604601352}
   m_prefabWall: {fileID: 9161555511633221909, guid: e2d6ab2bbf6a39740aad45669f305f48, type: 3}
-  m_wallRiseTime: 0.54
+  m_wallRiseTime: 0.5
   m_wallXIndex: 0
   m_wallYIndex: 0
   m_tileValues: {fileID: 11400000, guid: 7765abccfa3dc3b41b5d6852e455cf55, type: 2}
@@ -10137,18 +10127,18 @@ MonoBehaviour:
   - {fileID: 484478655549984285, guid: ced49429995db894594b11cfd0afc8a5, type: 3}
   - {fileID: 8400233068758859460, guid: 6b696f7ef57656541b4739f1919dbd58, type: 3}
   - {fileID: 6994846206937614246, guid: bd859b7375dd39542b37142fc546be07, type: 3}
-  m_ingredientYOffset: 1
+  m_ingredientYOffset: 1.22
   m_firstWallsToBuild:
   - isHorizontal: 1
     otherAxeCoordinate: 2
-    begin: 0
+    begin: 1
     end: 3
   - isHorizontal: 1
     otherAxeCoordinate: 2
     begin: 8
-    end: 11
+    end: 10
   - isHorizontal: 0
-    otherAxeCoordinate: 6
+    otherAxeCoordinate: 4
     begin: 5
     end: 10
   - isHorizontal: 0
