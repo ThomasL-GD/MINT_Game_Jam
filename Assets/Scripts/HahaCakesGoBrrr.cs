@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using TMPro;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class HahaCakesGoBrrr : MonoBehaviour
 {
@@ -9,7 +11,7 @@ public class HahaCakesGoBrrr : MonoBehaviour
 
     [SerializeField, Tooltip("the gameOver tmp element")]
     private TextMeshProUGUI m_text;
-
+    
     [SerializeField, Tooltip("the cake prefab")]
     private GameObject m_cakePrefab;
     
@@ -19,12 +21,14 @@ public class HahaCakesGoBrrr : MonoBehaviour
 
     private void Start()
     {
-        FunctionToMakeCakesGoBrr(15);
+        FunctionToMakeCakesGoBrr(PlayerPrefs.GetInt("LastScore"));
     }
     // Update is called once per frame
     public void FunctionToMakeCakesGoBrr(int p_score)
     {
-        m_text.text = $"Game Over\nScore {p_score}";
+        String highScoreText = PlayerPrefs.GetInt("NewHighScore") == 0 ? $" High Score : {PlayerPrefs.GetInt("HighScore")}" : "New High Score !";
+        
+        m_text.text = $"Game Over\nScore {p_score}\n{highScoreText}";
         StartCoroutine(MakeCakesGoBr(p_score));
     }
 
@@ -42,7 +46,6 @@ public class HahaCakesGoBrrr : MonoBehaviour
             }
 
             cakesBrrrd++;
-            
         }
     }
 
