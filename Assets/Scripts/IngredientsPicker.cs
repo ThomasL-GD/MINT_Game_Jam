@@ -31,6 +31,7 @@ public class IngredientsPicker : MonoBehaviour {
             }
             
             case 7: {
+                if(m_ingredientsLoaded.Count < 1) break;
                 foreach (Ingredient ingredient in m_ingredientsLoaded) {
                     Destroy(ingredient.go.GetComponent<Rigidbody>());
                     Collider[] colliders = ingredient.go.GetComponents<Collider>();

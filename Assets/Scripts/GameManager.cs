@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using Ingredients;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -143,18 +144,39 @@ public class GameManager : MonoBehaviour {
     public void Raoul() {
         SpawnIngredient(Random.Range(0,m_tileValues.m_numberOfXTiles), Random.Range(0,m_tileValues.m_numberOfYTiles), (IngredientList)Random.Range(0,4));
     }
+    
+    private void SpawnIngredient() {
+        float posX;
+        float posY;
+        List<Vector2Int> availablePos = new List<Vector2Int>();
+        for (int i = 0; i < m_walls.GetLength(0); i++) {
+            for (int j = 0; j < m_walls.GetLength(1); j++) {
+                if(!m_walls[i,j])availablePos.Add(new Vector2Int(i,j));
+            }
+        }
+        Vector2Int rand = availablePos[Random.Range(0, availablePos.Count)];
+        
+        IndexesToPositions(rand.x, rand.y, out posX, out posY);
+
+        Instantiate(m_ingredientsPrefabs[Random.Range(0, m_ingredientsPrefabs.Length)], new Vector3(posX, m_tileValues.m_center.y + m_ingredientYOffset, posY), m_prefabWall.transform.rotation);
+    }
+    
+    private void SpawnIngredient(int p_x, int p_y) {
+        Array possibleIng = Enum.GetValues(typeof(IngredientList));
+        SpawnIngredient(p_x, p_y, (IngredientList) possibleIng.GetValue(Random.Range(0, possibleIng.Length)));
+    }
 
     private void SpawnIngredient(int p_x, int p_y, Ingredients.IngredientList p_ingredient) {
         float posX;
         float posY;
         IndexesToPositions(p_x, p_y, out posX, out posY);
 
-        Instantiate(m_ingredientsPrefabs[Random.Range(0, m_ingredientsPrefabs.Length)], new Vector3(posX, m_tileValues.m_center.y + m_ingredientYOffset, posY), m_prefabWall.transform.rotation);
+        Instantiate(m_ingredientsPrefabs[(int)p_ingredient], new Vector3(posX, m_tileValues.m_center.y + m_ingredientYOffset, posY), m_prefabWall.transform.rotation);
     }
 
     private void IndexesToPositions(int p_x, int p_y, out float x, out float y) {
-        x = (m_tileValues.m_center.x - ((m_tileValues.m_numberOfXTiles * m_tileValues.m_sizeOfATile) / 2f))  +  p_x * m_tileValues.m_sizeOfATile  +  m_tileValues.m_sizeOfATile/2f;
-        y = (m_tileValues.m_center.z - ((m_tileValues.m_numberOfYTiles * m_tileValues.m_sizeOfATile) / 2f))  +  p_y * m_tileValues.m_sizeOfATile  +  m_tileValues.m_sizeOfATile/2f;
+        x = (m_tileValues.m_center.x - ((m_tileValues.m_numberOfXTiles * m_tileValues.m_sizeOfATile) / 2f))  +  p_x * m_tileValues.m_sizeOfATile  +  (m_tileValues.m_sizeOfATile/2f);
+        y = (m_tileValues.m_center.z - ((m_tileValues.m_numberOfYTiles * m_tileValues.m_sizeOfATile) / 2f))  +  p_y * m_tileValues.m_sizeOfATile  +  (m_tileValues.m_sizeOfATile/2f);
     }
 
     public void SetTileValues(int p_numberOfXTiles, int p_numberOfYTiles, float p_sizeOfATile, Vector3 p_center) {

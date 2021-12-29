@@ -48,7 +48,7 @@ public class OvenBehavior : MonoBehaviour {
             m_ingredientsValidated[(int) ing.type] = true;
             m_ingredientsIn.Add(ing);
             ing.go.transform.SetParent(transform);
-            ing.go.transform.localPosition = m_ingredientLocalPosition[NumberOfIngredientsValidated()];
+            ing.go.transform.localPosition = m_ingredientLocalPosition[(int)ing.type];
         }
         CheckForCake();
     }

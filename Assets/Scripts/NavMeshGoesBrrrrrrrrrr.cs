@@ -69,6 +69,7 @@ public class NavMeshGoesBrrrrrrrrrr : MonoBehaviour {
             m_jumpTargetPos = position + (cornerPos - position).normalized * m_jumpDistance;
             //Debug.Log($"desired index : {desiredIndex}    desired position : {cornerPos}   reference position : {transform.position}    normalized direction : {(cornerPos - transform.position)}");
             Debug.DrawLine(m_jumpOrigin, m_jumpTargetPos, Color.red, m_jumpCooldown);
+            transform.rotation = Quaternion.LookRotation((cornerPos - position).normalized, Vector3.up);
             m_isJumping = true;
             m_jumpElapsedTime = 0f;
         }
