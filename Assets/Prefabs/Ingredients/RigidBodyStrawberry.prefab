@@ -7,6 +7,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 390090268900915308, guid: 6b696f7ef57656541b4739f1919dbd58, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2985198015340568129, guid: 6b696f7ef57656541b4739f1919dbd58, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -74,6 +78,7 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 8130130417807389878, guid: 6b696f7ef57656541b4739f1919dbd58, type: 3}
     - {fileID: 3893261629670027488, guid: 6b696f7ef57656541b4739f1919dbd58, type: 3}
+    - {fileID: 6108879306411335052, guid: 6b696f7ef57656541b4739f1919dbd58, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 6b696f7ef57656541b4739f1919dbd58, type: 3}
 --- !u!1 &3332137619066249607 stripped
 GameObject:

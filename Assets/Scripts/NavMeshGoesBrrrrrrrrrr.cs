@@ -41,7 +41,7 @@ public class NavMeshGoesBrrrrrrrrrr : MonoBehaviour {
         if (m_ismTransformToFollowNull) return;
         
         if (!m_isJumping) return;
-
+        
         m_jumpElapsedTime += Time.deltaTime;
 
         if (m_jumpElapsedTime >= m_jumpDuration) {
@@ -51,6 +51,7 @@ public class NavMeshGoesBrrrrrrrrrr : MonoBehaviour {
         }
 
         float ratio = m_jumpElapsedTime / m_jumpDuration;
+        
         transform.position = (Mathf.Sqrt(ratio) * (m_jumpTargetPos - m_jumpOrigin)) + m_jumpOrigin;
     }
 
@@ -79,6 +80,7 @@ public class NavMeshGoesBrrrrrrrrrr : MonoBehaviour {
             m_jumpTargetPos = position + (cornerPos - position).normalized * m_jumpDistance;
             //Debug.Log($"desired index : {desiredIndex}    desired position : {cornerPos}   reference position : {transform.position}    normalized direction : {(cornerPos - transform.position)}");
             Debug.DrawLine(m_jumpOrigin, m_jumpTargetPos, Color.red, m_jumpCooldown);
+            transform.rotation = Quaternion.LookRotation((cornerPos - position).normalized, Vector3.up);
             transform.rotation = Quaternion.LookRotation((cornerPos - position).normalized, Vector3.up);
             m_isJumping = true;
             m_jumpElapsedTime = 0f;
