@@ -25,6 +25,8 @@ public class GameManager : MonoBehaviour {
 
     [SerializeField] private GameObject[] m_ingredientsPrefabs;
 
+    [SerializeField, Range(0f, 5f)] private float m_ingredientYOffset = 1f;
+
     [SerializeField] private WallsToBuild[] m_firstWallsToBuild;
 
     private bool[,] m_walls = null;
@@ -120,7 +122,7 @@ public class GameManager : MonoBehaviour {
         float posY;
         IndexesToPositions(p_x, p_y, out posX, out posY);
 
-        Instantiate(m_ingredientsPrefabs[Random.Range(0, m_ingredientsPrefabs.Length)], new Vector3(posX, m_tileValues.m_center.y, posY), m_prefabWall.transform.rotation);
+        Instantiate(m_ingredientsPrefabs[Random.Range(0, m_ingredientsPrefabs.Length)], new Vector3(posX, m_tileValues.m_center.y + m_ingredientYOffset, posY), m_prefabWall.transform.rotation);
     }
 
     private void IndexesToPositions(int p_x, int p_y, out float x, out float y) {
