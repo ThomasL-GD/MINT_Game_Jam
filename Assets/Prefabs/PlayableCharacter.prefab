@@ -546,6 +546,9 @@ GameObject:
   - component: {fileID: 4393235934457772513}
   - component: {fileID: 5681037799028650072}
   - component: {fileID: 3611478383137006019}
+  - component: {fileID: 4164909030309022062}
+  - component: {fileID: 1531723011}
+  - component: {fileID: 1531723023}
   m_Layer: 0
   m_Name: PlayableCharacter
   m_TagString: Untagged
@@ -718,6 +721,45 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.6888564, y: 0.04, z: 0.68203664}
   m_Center: {x: -0.00073614717, y: 2.37, z: 0.0052217394}
+--- !u!65 &4164909030309022062
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8076915217808495799}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.05, y: 0.19, z: 0.05}
+  m_Center: {x: 0.12, y: 1.86, z: 0}
+--- !u!135 &1531723011
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8076915217808495799}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 1
+  m_Center: {x: 0, y: 0.4, z: 0}
+--- !u!65 &1531723023
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8076915217808495799}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.05, y: 0.19, z: 0.05}
+  m_Center: {x: -0.13, y: 1.86, z: 0}
 --- !u!1 &8193381359413812552
 GameObject:
   m_ObjectHideFlags: 0
