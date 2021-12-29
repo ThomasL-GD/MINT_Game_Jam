@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 754637047402433472}
   - component: {fileID: 4455988507198522469}
   - component: {fileID: 1887622569496572079}
+  - component: {fileID: 1459556757223839199}
   m_Layer: 7
   m_Name: P_Cake_Bottom
   m_TagString: Untagged
@@ -85,6 +86,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &1459556757223839199
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 86363107403092346}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 141ad187aaadbf1469db91106b7b868f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_growingSpeed: 3
 --- !u!1 &638967937623851568
 GameObject:
   m_ObjectHideFlags: 0
@@ -96,6 +110,7 @@ GameObject:
   - component: {fileID: 258325140203329674}
   - component: {fileID: 3763349910356776751}
   - component: {fileID: 1431842882846761957}
+  - component: {fileID: 3704217554264170359}
   m_Layer: 7
   m_Name: P_Cake_Top
   m_TagString: Untagged
@@ -171,6 +186,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &3704217554264170359
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 638967937623851568}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 141ad187aaadbf1469db91106b7b868f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_growingSpeed: 3
 --- !u!1 &3414984906908890239
 GameObject:
   m_ObjectHideFlags: 0

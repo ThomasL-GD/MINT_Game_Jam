@@ -225,7 +225,7 @@ public class GameManager : MonoBehaviour {
 
     public void ChangeScore(int p_scoreToAdd) {
         m_score += p_scoreToAdd;
-        m_scoreMesh.text = "x " + m_score.ToString();
+        m_scoreMesh.text = m_score.ToString();
     }
 
     

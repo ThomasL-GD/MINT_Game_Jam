@@ -589,7 +589,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_maxSpeed: 10
-  m_maxAcceleration: 10
+  m_maxAcceleration: 15
   m_maxSpeedSprint: 20
   m_maxAccelerationSprint: 15
   m_rotationSpeed: 10
