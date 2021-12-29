@@ -23,8 +23,13 @@ public class HahaCakesGoBrrr : MonoBehaviour
     [SerializeField, Tooltip("the high score audio source")]
     private AudioSource m_highScoreAudio;
     
+    [SerializeField, Tooltip("the high score audio source")]
+    private AudioSource m_ClappingAudio;
+    
     [SerializeField, Tooltip("the cake adding sound audio source")]
     private AudioSource m_cakeAudio;
+    
+    
     
     private void Start()
     {
@@ -33,11 +38,7 @@ public class HahaCakesGoBrrr : MonoBehaviour
     // Update is called once per frame
     public void FunctionToMakeCakesGoBrr(int p_score)
     {
-        String highScoreText = PlayerPrefs.GetInt("NewHighScore") == 0 ? $" High Score : {PlayerPrefs.GetInt("HighScore")}" : "New High Score !";
-        
-        if(PlayerPrefs.GetInt("NewHighScore") == 1)m_highScoreAudio.Play();
-        
-        m_text.text = $"Game Over\nScore {0}\n{highScoreText}";
+        m_text.text = $"Game Over\nScore {0}\nHigh Score : {PlayerPrefs.GetInt("HighScore")}";
         StartCoroutine(MakeCakesGoBr(p_score));
     }
 
@@ -45,23 +46,26 @@ public class HahaCakesGoBrrr : MonoBehaviour
     
     IEnumerator MakeCakesGoBr(int pScore)
     {
+        yield return new WaitForSeconds(2f);
         int cakesBrrrd = 0;
-        while (cakesBrrrd< pScore)
+        while (cakesBrrrd < pScore)
         {
             yield return new WaitForSeconds(m_timeBetweenCakes);
             Vector3 position = new Vector3(m_rect.x + Random.Range(m_rect.xMin, m_rect.xMax), 0, m_rect.y + Random.Range(m_rect.yMin, m_rect.yMax));
 
-
-            
             if (Physics.SphereCast(position + Vector3.up * 100f,0.62f, Vector3.down, out RaycastHit hit, 150f))
             {
                 Instantiate(m_cakePrefab, hit.point + Vector3.up * 0.275f, m_cakePrefab.transform.rotation);
             }
 
             cakesBrrrd++;
-            String highScoreText = PlayerPrefs.GetInt("NewHighScore") == 0 ? $" High Score : {PlayerPrefs.GetInt("HighScore")}" : "New High Score !";
+            String highScoreText = cakesBrrrd < PlayerPrefs.GetInt("HighScore") ? $" High Score : {PlayerPrefs.GetInt("HighScore")}" : "New High Score !";
             
-            if(PlayerPrefs.GetInt("NewHighScore") == 1)m_highScoreAudio.Play();
+            if(PlayerPrefs.GetInt("HighScore") == cakesBrrrd)
+            {
+                m_highScoreAudio.Play();
+                m_ClappingAudio.Play();
+            }
             else m_cakeAudio.Play();
             
             m_text.text = $"Game Over\nScore {cakesBrrrd}\n{highScoreText}";
