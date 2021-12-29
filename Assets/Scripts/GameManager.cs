@@ -83,22 +83,10 @@ public class GameManager : MonoBehaviour {
         wolrdPosOfFirstCorner = new Vector2(m_tileValues.m_center.x - ((m_tileValues.m_numberOfXTiles * m_tileValues.m_sizeOfATile) / 2f), (m_tileValues.m_center.z - ((m_tileValues.m_numberOfYTiles * m_tileValues.m_sizeOfATile) / 2f)));
         wolrdPosOfLastCorner = new Vector2(wolrdPosOfFirstCorner.x + 2*(m_tileValues.m_center.x - wolrdPosOfFirstCorner.x), wolrdPosOfFirstCorner.y + 2*(m_tileValues.m_center.z - wolrdPosOfFirstCorner.y));
         
-        Raoul();
-        Raoul();
-        Raoul();
-        Raoul();
-        Raoul();
-        Raoul();
-        Raoul();
-        Raoul();
-        Raoul();
-        Raoul();
-        Raoul();
-        Raoul();
-        Raoul();
-        Raoul();
-        Raoul();
-        Raoul();
+        SpawnIngredient(IngredientList.Egg);
+        SpawnIngredient(IngredientList.Strawberry);
+        SpawnIngredient(IngredientList.Flour);
+        SpawnIngredient(IngredientList.Chocolate);
     }
 
     private void OnValidate() {
