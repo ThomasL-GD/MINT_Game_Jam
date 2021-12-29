@@ -32,6 +32,7 @@ public class GameManager : MonoBehaviour {
     [SerializeField] private WallsToBuild[] m_firstWallsToBuild;
 
     [SerializeField, Range(1,10)] private int m_startHealth = 3;
+    [SerializeField, Range(1,10)] private int m_maxHealth = 5;
 
     [SerializeField] private GameObject[] m_visualHealthPoints;
 
@@ -49,6 +50,7 @@ public class GameManager : MonoBehaviour {
 
     public delegate void DestroyDelegator();
     public static DestroyDelegator DestroyEveryWall;
+    public static DestroyDelegator OnEndScene;
 
 
     [Serializable]
@@ -86,7 +88,7 @@ public class GameManager : MonoBehaviour {
 
         m_currentHealth = m_startHealth;
         
-        if(m_visualHealthPoints.Length < m_startHealth)Debug.LogError("There's not enough visual health points !");
+        if(m_visualHealthPoints.Length < m_maxHealth)Debug.LogError("There's not enough visual health points !");
         else {
             //We set the correct amount of health point in case there are too many
             for (int i = m_visualHealthPoints.Length - 1; i >= m_startHealth ; i--) {
@@ -219,13 +221,16 @@ public class GameManager : MonoBehaviour {
     }
 
     public void ChangeHp(int p_change) {
+        if (m_currentHealth + p_change > m_maxHealth) p_change = m_maxHealth - m_currentHealth;
+        
         switch (p_change) {
             case 0:
+#if UNITY_EDITOR
                 Debug.LogWarning("Aaand I say to myseeelf... what the fuck ?!", this);
+#endif
                 return;
             case > 0: {
                 for (int i = m_currentHealth ; i != p_change + m_currentHealth ; i ++) {
-                    Debug.Log($"gain : {i}");
                     m_visualHealthPoints[i].SetActive(true);
                     BlinkHP script = m_visualHealthPoints[i].GetComponent<BlinkHP>();
                     script.Initialize(false);
@@ -242,10 +247,11 @@ public class GameManager : MonoBehaviour {
         }
 
         m_currentHealth += p_change;
-        Debug.Log($"current health : {m_currentHealth}");
 
         
         if (m_currentHealth > 0) return;
+        
+        OnEndScene?.Invoke();
         
         PlayerPrefs.SetInt("NewHighScore", PlayerPrefs.GetInt("HighScore") < m_score?1:0);
 
@@ -258,10 +264,5 @@ public class GameManager : MonoBehaviour {
     public void ChangeScore(int p_scoreToAdd = 1) {
         m_score += p_scoreToAdd;
         m_scoreMesh.text = m_score.ToString();
-    }
-
-    
-    private void OnDrawGizmos() {
-        if (m_firstWallsToBuild.Length < 1) return;
     }
 }

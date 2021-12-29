@@ -52,6 +52,10 @@ public class IngredientsPicker : MonoBehaviour {
     
     private List<Ingredient> m_ingredientsLoaded = new List<Ingredient>();
 
+    private void Start() {
+        GameManager.OnEndScene += ResetPhysics;
+    }
+
     private void OnCollisionEnter(Collision p_other) {
         switch (p_other.gameObject.layer) {
             case 7: {
@@ -171,5 +175,10 @@ public class IngredientsPicker : MonoBehaviour {
             m_elapsedBlinkingTime = 0f;
             m_isBlinking = false;
         }
+    }
+
+    private void ResetPhysics() {
+        GameManager.OnEndScene -= ResetPhysics;
+        Physics.IgnoreLayerCollision(gameObject.layer, 7, false);
     }
 }
