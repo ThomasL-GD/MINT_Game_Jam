@@ -15,6 +15,10 @@ namespace IngredientWithGo {
 
 public class IngredientsPicker : MonoBehaviour {
 
+    
+    [SerializeField] private AudioSource m_ouchSound;
+    [SerializeField] private AudioSource m_pickupSound;
+    [SerializeField] private AudioSource m_putDownSound;
     [SerializeField] private Transform m_loadingPosition = null;
 
     [SerializeField, Tooltip("the rigidbodied prefabs")]
@@ -51,9 +55,10 @@ public class IngredientsPicker : MonoBehaviour {
     private void OnCollisionEnter(Collision p_other) {
         switch (p_other.gameObject.layer) {
             case 7: {
-                if(m_isBlinking) break;
+                    if(m_isBlinking) break;
                     m_isBlinking = true;
                     StartCoroutine(Blink());
+                    m_ouchSound.Play();
 
                 if (m_ingredientsLoaded.Count < 1) {
                     GameManager.singleton.ChangeHp(-1);
@@ -117,6 +122,8 @@ public class IngredientsPicker : MonoBehaviour {
                         }default: return;
                     }
 
+                    m_pickupSound.Play();
+                    
                     GameObject ingredient = Instantiate(prefab, m_loadingPosition.position, prefab.transform.rotation);
                     Instantiate(particleSystem, p_other.transform.position, particleSystem.transform.rotation);
                     m_ingredientsLoaded.Add(new Ingredient(){type = type, go = ingredient});
@@ -138,7 +145,7 @@ public class IngredientsPicker : MonoBehaviour {
                     script.AddIngredients(ingredientsToGive);
                     m_ingredientsLoaded.Clear();
                     
-                    
+                    m_putDownSound.Play();
                 }
                 break;
             }

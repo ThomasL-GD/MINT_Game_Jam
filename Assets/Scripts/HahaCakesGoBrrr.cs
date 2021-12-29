@@ -28,8 +28,8 @@ public class HahaCakesGoBrrr : MonoBehaviour
     
     [SerializeField, Tooltip("the cake adding sound audio source")]
     private AudioSource m_cakeAudio;
-    
-    
+
+    [SerializeField] private TextMeshProUGUI m_restartText;
     
     private void Start()
     {
@@ -44,11 +44,11 @@ public class HahaCakesGoBrrr : MonoBehaviour
 
     private bool m_canRestart = false;
     
-    IEnumerator MakeCakesGoBr(int pScore)
+    IEnumerator MakeCakesGoBr(int p_Score)
     {
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(1.5f);
         int cakesBrrrd = 0;
-        while (cakesBrrrd < pScore)
+        while (cakesBrrrd < p_Score)
         {
             yield return new WaitForSeconds(m_timeBetweenCakes);
             Vector3 position = new Vector3(m_rect.x + Random.Range(m_rect.xMin, m_rect.xMax), 0, m_rect.y + Random.Range(m_rect.yMin, m_rect.yMax));
@@ -65,13 +65,21 @@ public class HahaCakesGoBrrr : MonoBehaviour
             {
                 m_highScoreAudio.Play();
                 m_ClappingAudio.Play();
+                m_text.text = $"Game Over\nScore {cakesBrrrd}\n{highScoreText}";
+                yield return new WaitForSeconds(1f);
             }
-            else m_cakeAudio.Play();
+            else
+            {
+                m_cakeAudio.Play();
             
-            m_text.text = $"Game Over\nScore {cakesBrrrd}\n{highScoreText}";
+                m_text.text = $"Game Over\nScore {cakesBrrrd}\n{highScoreText}";
+            }
         }
+        
+        if(PlayerPrefs.GetInt("NewHighScore") == 1) PlayerPrefs.SetInt("HighScore", p_Score);
 
         m_canRestart = true;
+        m_restartText.gameObject.SetActive(true);
     }
 
     private void Update()

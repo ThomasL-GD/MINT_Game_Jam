@@ -246,9 +246,7 @@ public class GameManager : MonoBehaviour {
         if (m_currentHealth > 0) return;
         
         PlayerPrefs.SetInt("NewHighScore", PlayerPrefs.GetInt("HighScore") < m_score?1:0);
-            
-        if(PlayerPrefs.GetInt("NewHighScore") == 1) PlayerPrefs.SetInt("HighScore", m_score);
-            
+
         PlayerPrefs.SetInt("LastScore", m_score);
             
         PlayerPrefs.Save();

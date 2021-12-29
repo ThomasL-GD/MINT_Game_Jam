@@ -7,6 +7,8 @@ public class NavMeshGoesBrrrrrrrrrr : MonoBehaviour {
 
     [SerializeField] public Transform m_transformToFollow = null;
 
+    [SerializeField] private AudioSource m_jumpSound;
+    
     [Header("Jump")]
     [SerializeField] [Range(0.1f, 10f)] private float m_jumpCooldown = 1f;
     [SerializeField] [Range(0.1f, 1f)] private float m_jumpDuration = 0.2f;
@@ -60,6 +62,7 @@ public class NavMeshGoesBrrrrrrrrrr : MonoBehaviour {
         yield return new WaitForSeconds(m_jumpCooldown);
         
         m_animator.SetTrigger(Jump);
+        m_jumpSound.Play();
 
         NavMeshPath path = new NavMeshPath();
         bool pathFound = m_meshAgent.CalculatePath(m_transformToFollow.position, path);
