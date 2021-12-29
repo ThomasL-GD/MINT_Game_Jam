@@ -38,7 +38,7 @@ public class Movement : MonoBehaviour
 
     private Vector3 SetVelocityFromInput(Vector3 p_currentVelocity)
     {
-        
+        m_rigidBody.angularVelocity = Vector3.zero;
         bool sprinting = Input.GetKey(m_sprintKey);
         float maxSpeed = sprinting?m_maxSpeedSprint:m_maxSpeed;
         float maxAcceleration = sprinting?m_maxAccelerationSprint:m_maxAcceleration;
@@ -77,7 +77,9 @@ public class Movement : MonoBehaviour
         m_animator.SetBool(m_runHashCode,true);
 
         Quaternion targetRotation = Quaternion.LookRotation(p_playerInput.normalized*2f);
- 
+
+        targetRotation = Quaternion.Euler(0,targetRotation.eulerAngles.y,0);
+        
         if(Quaternion.Angle(transform.rotation,targetRotation) < 5f)
         {
             transform.rotation = targetRotation;

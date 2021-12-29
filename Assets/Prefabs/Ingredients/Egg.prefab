@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 6725310276894187541}
   - component: {fileID: 5068210258822840771}
   - component: {fileID: -8880573123433345052}
+  - component: {fileID: 4761008023994747826}
   m_Layer: 6
   m_Name: Egg
   m_TagString: Untagged
@@ -30,7 +31,7 @@ Transform:
   m_LocalRotation: {x: 0.000000021855694, y: 0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -96,8 +97,8 @@ SphereCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.12184388
-  m_Center: {x: -0.0004991926, y: 0.12184388, z: -0.000000018626451}
+  m_Radius: 0.13518883
+  m_Center: {x: -0.000553865, y: 0.13518883, z: -0.000000018626451}
 --- !u!114 &-8880573123433345052
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -111,3 +112,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_ingredient: 0
+--- !u!114 &4761008023994747826
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5068210258822840768}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab9b53bffcf9eec488431b6c8f58fc99, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_rotateSpeed: 90
+  m_spinAngle: 30
+  m_offset: {x: -0.091, y: 0, z: 0}
+  m_frequency: 0
+  m_intensity: 0

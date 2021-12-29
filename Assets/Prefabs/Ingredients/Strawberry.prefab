@@ -80,8 +80,8 @@ SphereCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.12
-  m_Center: {x: -0.0044084527, y: 0.12147233, z: -0.003518317}
+  m_Radius: 0.13153793
+  m_Center: {x: -0.0048912875, y: 0.13477658, z: -0.003903661}
 --- !u!33 &3876908477662862836
 MeshFilter:
   m_ObjectHideFlags: 0
