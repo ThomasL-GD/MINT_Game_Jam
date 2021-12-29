@@ -11678,11 +11678,11 @@ MonoBehaviour:
   - isHorizontal: 0
     otherAxeCoordinate: 4
     begin: 6
-    end: 10
+    end: 9
   - isHorizontal: 0
     otherAxeCoordinate: 7
     begin: 6
-    end: 10
+    end: 9
   - isHorizontal: 1
     otherAxeCoordinate: 11
     begin: 2
@@ -11692,6 +11692,7 @@ MonoBehaviour:
     begin: 8
     end: 9
   m_startHealth: 2
+  m_maxHealth: 5
   m_visualHealthPoints:
   - {fileID: 613843995}
   - {fileID: 1528634129}
@@ -13766,7 +13767,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8039445214250355458, guid: 903fefc57b3cbb74bb9de7cda15f6c76, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.987
+      value: 7.46
       objectReference: {fileID: 0}
     - target: {fileID: 8039445214250355458, guid: 903fefc57b3cbb74bb9de7cda15f6c76, type: 3}
       propertyPath: m_LocalPosition.y
@@ -13774,7 +13775,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8039445214250355458, guid: 903fefc57b3cbb74bb9de7cda15f6c76, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.314
+      value: -8.95
       objectReference: {fileID: 0}
     - target: {fileID: 8039445214250355458, guid: 903fefc57b3cbb74bb9de7cda15f6c76, type: 3}
       propertyPath: m_LocalRotation.w
