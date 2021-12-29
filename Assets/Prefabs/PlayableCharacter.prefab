@@ -611,8 +611,15 @@ MonoBehaviour:
   m_loadingPosition: {fileID: 2742725074037822340}
   m_eggRbPrefab: {fileID: 7432137770768715038, guid: 2d3e9c375888a9d49965fd94a31d7423, type: 3}
   m_chocolateRbPrefab: {fileID: 7659275718161034727, guid: d9e3b3412ffdc5947b1fbbc0d31d6c69, type: 3}
-  m_FlourRbPrefab: {fileID: 1907669345094116464, guid: 7726eb01f0c4cf042bb2757eef7eea35, type: 3}
+  m_flourRbPrefab: {fileID: 1907669345094116464, guid: 7726eb01f0c4cf042bb2757eef7eea35, type: 3}
   m_strawberryRbPrefab: {fileID: 3332137619066249607, guid: d653e1049c038c440be44bc0a2bf6f30, type: 3}
+  m_eggParticle: {fileID: 765472394092606134, guid: 54edda6819adbfa49bee915282e62bec, type: 3}
+  m_chocolateParticle: {fileID: 1503096806290732799, guid: 644441cc7dc87a541a5ab595f4701edb, type: 3}
+  m_flourParticle: {fileID: 2344817815410287909, guid: 45b6b9179312365449507b4b26f3e3b6, type: 3}
+  m_strawberryParticle: {fileID: 8306659378446197409, guid: b5ac2a36f7a7a7b4796b2d311ee1a47f, type: 3}
+  m_blinkTiming: 0.2
+  m_totalBlinkTime: 2
+  m_mr: {fileID: 0}
 --- !u!54 &2736830145490270178
 Rigidbody:
   m_ObjectHideFlags: 0

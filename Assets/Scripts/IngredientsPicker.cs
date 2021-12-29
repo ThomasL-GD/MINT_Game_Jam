@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Ingredients;
 using UnityEngine;
 using IngredientWithGo;
+using UnityEngine.Serialization;
 
 namespace IngredientWithGo {
     public struct Ingredient {
@@ -17,7 +18,22 @@ public class IngredientsPicker : MonoBehaviour {
     [SerializeField] private Transform m_loadingPosition = null;
 
     [SerializeField, Tooltip("the rigidbodied prefabs")]
-    private GameObject m_eggRbPrefab, m_chocolateRbPrefab, m_FlourRbPrefab, m_strawberryRbPrefab;
+    private GameObject m_eggRbPrefab, m_chocolateRbPrefab;
+
+    [FormerlySerializedAs("m_FlourRbPrefab")] [SerializeField, Tooltip("the rigidbodied prefabs")]
+    private GameObject m_flourRbPrefab;
+
+    [SerializeField, Tooltip("the rigidbodied prefabs")]
+    private GameObject m_strawberryRbPrefab;
+
+    [SerializeField, Tooltip("the particle effects")]
+    private ParticleSystem m_eggParticle, m_chocolateParticle;
+
+    [FormerlySerializedAs("m_FlourParticle")] [SerializeField, Tooltip("the particle effects")]
+    private ParticleSystem m_flourParticle;
+
+    [SerializeField, Tooltip("the particle effects")]
+    private ParticleSystem m_strawberryParticle;
 
     [SerializeField] [Range(0.1f, 1f)] private float m_blinkTiming = 0.2f;
     [SerializeField] [Range(0.2f, 5f)] private float m_totalBlinkTime = 2f;
@@ -67,33 +83,37 @@ public class IngredientsPicker : MonoBehaviour {
                     IngredientList type = script.m_ingredient;
 
                     GameObject prefab = new GameObject();
-                    
+                    ParticleSystem particleSystem = new ParticleSystem();
                     switch (type)
                     {
                         case IngredientList.Egg:
                         {
                             prefab = m_eggRbPrefab;
+                            particleSystem = m_eggParticle;
                             break;
                         }
                         case IngredientList.Chocolate:
                         {
                             prefab = m_chocolateRbPrefab;
+                            particleSystem = m_chocolateParticle;
                             break;
                         }
                         case IngredientList.Flour:
                         {
-                            prefab = m_FlourRbPrefab;
+                            prefab = m_flourRbPrefab;
+                            particleSystem = m_flourParticle;
                             break;
                         }
                         case IngredientList.Strawberry:
                         {
                             prefab = m_strawberryRbPrefab;
+                            particleSystem = m_strawberryParticle;
                             break;
                         }default: return;
                     }
 
                     GameObject ingredient = Instantiate(prefab, m_loadingPosition.position, prefab.transform.rotation);
-                    
+                    Instantiate(particleSystem, p_other.transform.position, particleSystem.transform.rotation);
                     m_ingredientsLoaded.Add(new Ingredient(){type = type, go = ingredient});
                     
                     Destroy(p_other.gameObject);
