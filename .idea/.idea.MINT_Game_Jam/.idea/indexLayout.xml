@@ -1,18 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="ContentModelUserStore">
-    <attachedFolders />
-    <explicitIncludes />
-    <explicitExcludes>
-      <Path>.git</Path>
-      <Path>.idea</Path>
-      <Path>3DSMaxFiles</Path>
-      <Path>Library</Path>
-      <Path>Logs</Path>
-      <Path>UserSettings</Path>
-      <Path>obj</Path>
-    </explicitExcludes>
-  </component>
   <component name="UserContentModel">
     <attachedFolders />
     <explicitIncludes>
@@ -40,6 +27,7 @@
     <explicitExcludes>
       <Path>.git</Path>
       <Path>.idea</Path>
+      <Path>3DSMaxFiles</Path>
       <Path>Library</Path>
       <Path>Logs</Path>
       <Path>Temp</Path>
