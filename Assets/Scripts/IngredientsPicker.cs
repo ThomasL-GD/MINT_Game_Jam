@@ -55,19 +55,24 @@ public class IngredientsPicker : MonoBehaviour {
                     m_isBlinking = true;
                     StartCoroutine(Blink());
 
-                if (m_ingredientsLoaded.Count < 1) break;
-                foreach (Ingredient ingredient in m_ingredientsLoaded) {
-                    Destroy(ingredient.go.GetComponent<Rigidbody>());
-                    Collider[] colliders = ingredient.go.GetComponents<Collider>();
-                    foreach (Collider col in colliders) {
-                        Destroy(col);
-                    }
-
-                    ingredient.go.AddComponent<BlinkAndDestroy>();
-                    
-                    GameManager.singleton.SpawnIngredient(ingredient.type);
+                if (m_ingredientsLoaded.Count < 1) {
+                    GameManager.singleton.LoseHp();
+                    break;
                 }
-                m_ingredientsLoaded.Clear();
+                else {
+                    foreach (Ingredient ingredient in m_ingredientsLoaded) {
+                        Destroy(ingredient.go.GetComponent<Rigidbody>());
+                        Collider[] colliders = ingredient.go.GetComponents<Collider>();
+                        foreach (Collider col in colliders) {
+                            Destroy(col);
+                        }
+
+                        ingredient.go.AddComponent<BlinkAndDestroy>();
+
+                        GameManager.singleton.SpawnIngredient(ingredient.type);
+                    }
+                    m_ingredientsLoaded.Clear();
+                }
                 break;
             }
         }

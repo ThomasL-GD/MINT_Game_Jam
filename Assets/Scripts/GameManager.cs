@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using Ingredients;
+using TMPro;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -32,6 +33,16 @@ public class GameManager : MonoBehaviour {
     [SerializeField, Range(1,10)] private int m_maxHealth = 3;
 
     [SerializeField] private GameObject[] m_visualHealthPoints;
+
+    [SerializeField] private TextMeshProUGUI m_scoreMesh = null;
+
+    public int score {
+        get { return score; }
+        set {
+            m_scoreMesh.text = value.ToString();
+            score = value;
+        }
+    }
 
     [HideInInspector] private int m_currentHealth = 3;
     
@@ -85,6 +96,8 @@ public class GameManager : MonoBehaviour {
                 m_visualHealthPoints[i].SetActive(false);
             }
         }
+
+        score = 0;
     }
 
     private void Start() {
@@ -151,7 +164,7 @@ public class GameManager : MonoBehaviour {
         SpawnIngredient(rand.x, rand.y, p_ingredient);
     }
 
-    public Vector2Int GetRandomAvailableTile() {
+    private Vector2Int GetRandomAvailableTile() {
         List<Vector2Int> availablePos = new List<Vector2Int>();
         for (int i = 0; i < m_walls.GetLength(0); i++) {
             for (int j = 0; j < m_walls.GetLength(1); j++) {
