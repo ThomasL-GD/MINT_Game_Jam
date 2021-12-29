@@ -13,6 +13,7 @@ public class OvenBehavior : MonoBehaviour {
     [SerializeField] [Range(1,5)] private int m_numberOfCakeToSpawn = 3;
     //[SerializeField] [Range(0.5f,3f)] private float m_spawnDistance = 1.5f;
     [SerializeField] [Range(0.1f,3f)] private float m_spawnInterval = 0.5f;
+    //[SerializeField] [Range(1f,50f)] private float m_randomMoveInterval = 10f;
     //[SerializeField] private Vector3[] m_potentialSpawnPos = null;
     
     [SerializeField] private Vector3[] m_ingredientLocalPosition = null;
@@ -53,10 +54,11 @@ public class OvenBehavior : MonoBehaviour {
         foreach (Ingredient ing in p_ingredients) {
             AddIngredient(ing);
         }
-        if (!CheckForCake()) RunAway();
+        if (!CheckForCake()) RunAway(true);
     }
 
-    private void RunAway() {
+    public void RunAway(bool p_forceChangePath) {
+        if(!p_forceChangePath && !(m_navMeshAgent.remainingDistance > m_navMeshAgent.stoppingDistance || m_navMeshAgent.pathStatus != NavMeshPathStatus.PathComplete)) return;
         SetRandomPathToGo();
     }
 
@@ -65,6 +67,7 @@ public class OvenBehavior : MonoBehaviour {
             if(!bo) return false;
         }
         
+        GameManager.singleton.RegenerateWalls();
         GameManager.singleton.SpawnAllIngredient();
         StartBaking();
         return true;
@@ -98,6 +101,12 @@ public class OvenBehavior : MonoBehaviour {
         if (m_cakesSpawned < m_numberOfCakeToSpawn) StartCoroutine(BakingWhileRunning());
         else m_isSpawning = false;
     }
+
+    /*private IEnumerator RandomMoveTick() {
+        yield return new WaitForSeconds(m_randomMoveInterval);
+
+        StartCoroutine(RandomMoveTick());
+    }*/
 
     private void SetRandomPathToGo() {
         Vector2 firstCorner = GameManager.singleton.wolrdPosOfFirstCorner;

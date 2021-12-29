@@ -30,7 +30,7 @@ public class GameManager : MonoBehaviour {
 
     [SerializeField] private WallsToBuild[] m_firstWallsToBuild;
 
-    [SerializeField, Range(1,10)] private int m_maxHealth = 3;
+    [SerializeField, Range(1,10)] private int m_startHealth = 3;
 
     [SerializeField] private GameObject[] m_visualHealthPoints;
 
@@ -45,7 +45,10 @@ public class GameManager : MonoBehaviour {
 
     public Vector2 wolrdPosOfFirstCorner;
     public Vector2 wolrdPosOfLastCorner;
-    
+
+    public delegate void DestroyDelegator();
+    public static DestroyDelegator DestroyEveryWall;
+
 
     [Serializable]
     private struct WallsToBuild {
@@ -80,12 +83,12 @@ public class GameManager : MonoBehaviour {
         m_wallsParent = Instantiate(new GameObject(name = "Walls")).transform;
         m_walls = new bool[m_tileValues.m_numberOfXTiles, m_tileValues.m_numberOfYTiles];
 
-        m_currentHealth = m_maxHealth;
+        m_currentHealth = m_startHealth;
         
-        if(m_visualHealthPoints.Length < m_maxHealth)Debug.LogError("There's not enough visual health points !");
+        if(m_visualHealthPoints.Length < m_startHealth)Debug.LogError("There's not enough visual health points !");
         else {
             //We set the correct amount of health point in case there are too many
-            for (int i = m_visualHealthPoints.Length - 1; i >= m_maxHealth ; i--) {
+            for (int i = m_visualHealthPoints.Length - 1; i >= m_startHealth ; i--) {
                 m_visualHealthPoints[i].SetActive(false);
             }
         }
@@ -111,13 +114,27 @@ public class GameManager : MonoBehaviour {
         }
     }
 
+    public void RegenerateWalls() {
+        DestroyAllWalls();
+
+        for (int i = 0; i < 2; i++) {
+            for (int j = 0; j < 3; j++) {
+                bool rDir = Random.Range(0, 2) == 1;
+                if (rDir) BuildLineOfWallsX(1 + (j * 4) + Random.Range(0, 3), 1+ (i*6), 4+ (i*6));
+                else BuildLineOfWallsY(1+ (i*6) + Random.Range(0, 4), 1 + (j*4), 3 + (j*4));
+            }
+        }
+    }
+
     private void BuildLineOfWallsX(int p_y, int p_begin, int p_end) {
+        Debug.Log($"X wall : {p_y}       {p_begin}  {p_end}");
         for (int i = 0; i <= Mathf.Abs(p_end - p_begin); i++) {
             BuildAWall(p_begin + i, p_y);
         }
     }
 
     private void BuildLineOfWallsY(int p_x, int p_begin, int p_end) {
+        Debug.Log($"Y wall : {p_x}       {p_begin}  {p_end}");
         for (int i = 0; i <= Mathf.Abs(p_end - p_begin); i++) {
             BuildAWall(p_x, p_begin + i);
         }
@@ -135,7 +152,17 @@ public class GameManager : MonoBehaviour {
         
         IndexesToPositions(p_x, p_y, out posX, out posY);
 
-        Instantiate(m_prefabWall, new Vector3(posX, m_tileValues.m_center.y, posY), m_prefabWall.transform.rotation, m_wallsParent);
+        GameObject go = Instantiate(m_prefabWall, new Vector3(posX, m_tileValues.m_center.y, posY), m_prefabWall.transform.rotation, m_wallsParent);
+        go.AddComponent<WallBehavior>();
+    }
+
+    private void DestroyAllWalls() {
+        DestroyEveryWall?.Invoke();
+        for (int i = 0; i < m_walls.GetLength(0); i++) {
+            for (int j = 0; j < m_walls.GetLength(0); j++) {
+                m_walls[i, j] = false;
+            }
+        }
     }
     
     public void SpawnAllIngredient() {

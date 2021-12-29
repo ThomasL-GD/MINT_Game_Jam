@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
@@ -86,4 +87,17 @@ public class NavMeshGoesBrrrrrrrrrr : MonoBehaviour {
         StartCoroutine(JumpTimer());
         
     }
+
+    /*
+    private void OnCollisionEnter(Collision p_other) {
+        Debug.Log("1");
+        if (p_other.gameObject.layer == 8) {
+            Debug.Log("2");
+            if (p_other.gameObject.TryGetComponent(out OvenBehavior script)) {
+                Debug.Log("3");
+                script.RunAway(true);
+                
+            }
+        }
+    }*/
 }
