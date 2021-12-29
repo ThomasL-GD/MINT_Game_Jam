@@ -21,6 +21,7 @@ public class IngredientsPicker : MonoBehaviour {
                 m_ingredientsLoaded.Add(new Ingredient(){type = script.m_ingredient, go = p_other.gameObject});
                 Destroy(script);
                 p_other.gameObject.transform.position = m_loadingPosition.position;
+                p_other.gameObject.AddComponent<Rigidbody>();
             }
         }
     }

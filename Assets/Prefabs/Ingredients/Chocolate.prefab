@@ -7,6 +7,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -8880573123433345052, guid: ece3e84b6b3121642a2f74c8c8807ac6, type: 3}
+      propertyPath: m_ingredient
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 5068210258822840768, guid: ece3e84b6b3121642a2f74c8c8807ac6, type: 3}
       propertyPath: m_Name
       value: Chocolate

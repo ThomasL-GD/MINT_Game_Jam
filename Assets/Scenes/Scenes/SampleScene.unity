@@ -9851,10 +9851,10 @@ MonoBehaviour:
   m_wallYIndex: 0
   m_tileValues: {fileID: 11400000, guid: 7765abccfa3dc3b41b5d6852e455cf55, type: 2}
   m_ingredientsPrefabs:
-  - {fileID: 94827468150852968, guid: ece3e84b6b3121642a2f74c8c8807ac6, type: 3}
-  - {fileID: 8698629159929946376, guid: ced49429995db894594b11cfd0afc8a5, type: 3}
-  - {fileID: 723793764237399975, guid: 533c71a7ca6df2844923516482b8d799, type: 3}
-  - {fileID: 888472865944481192, guid: bd859b7375dd39542b37142fc546be07, type: 3}
+  - {fileID: 5068210258822840768, guid: ece3e84b6b3121642a2f74c8c8807ac6, type: 3}
+  - {fileID: 484478655549984285, guid: ced49429995db894594b11cfd0afc8a5, type: 3}
+  - {fileID: 8400233068758859460, guid: 6b696f7ef57656541b4739f1919dbd58, type: 3}
+  - {fileID: 6994846206937614246, guid: bd859b7375dd39542b37142fc546be07, type: 3}
   m_ingredientYOffset: 1
   m_firstWallsToBuild:
   - isHorizontal: 1

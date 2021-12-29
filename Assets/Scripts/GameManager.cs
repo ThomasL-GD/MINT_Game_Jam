@@ -7,7 +7,7 @@ namespace Ingredients {
     public enum IngredientList {
         Egg = 0,
         Flour = 1,
-        Sugar = 2,
+        Strawberry = 2,
         Chocolate = 3,
     }
 }
@@ -30,6 +30,7 @@ public class GameManager : MonoBehaviour {
     [SerializeField] private WallsToBuild[] m_firstWallsToBuild;
 
     private bool[,] m_walls = null;
+    private Transform m_wallsParent = null;
     
 
     [Serializable]
@@ -62,6 +63,7 @@ public class GameManager : MonoBehaviour {
  
         singleton = this;
 
+        m_wallsParent = Instantiate(new GameObject(name = "Walls")).transform;
         m_walls = new bool[m_tileValues.m_numberOfXTiles, m_tileValues.m_numberOfYTiles];
     }
 
@@ -109,7 +111,7 @@ public class GameManager : MonoBehaviour {
         
         IndexesToPositions(p_x, p_y, out posX, out posY);
 
-        Instantiate(m_prefabWall, new Vector3(posX, m_tileValues.m_center.y, posY), m_prefabWall.transform.rotation);
+        Instantiate(m_prefabWall, new Vector3(posX, m_tileValues.m_center.y, posY), m_prefabWall.transform.rotation, m_wallsParent);
     }
 
     [ContextMenu("Raoul, eat !")]

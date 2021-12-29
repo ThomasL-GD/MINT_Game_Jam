@@ -254,9 +254,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_transformToFollow: {fileID: 0}
-  m_jumpCooldown: 1.73
-  m_jumpDuration: 0.2
-  m_jumpDistance: 1
+  m_jumpCooldown: 1.12
+  m_jumpDuration: 0.373
+  m_jumpDistance: 2.69
   m_ignoreStep: 0.2
 --- !u!195 &6565016745639722608
 NavMeshAgent:
