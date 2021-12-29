@@ -142,7 +142,7 @@ public class GameManager : MonoBehaviour {
 
     [ContextMenu("Raoul, eat !")]
     public void Raoul() {
-        SpawnIngredient(Random.Range(0,m_tileValues.m_numberOfXTiles), Random.Range(0,m_tileValues.m_numberOfYTiles), (IngredientList)Random.Range(0,4));
+        SpawnIngredient();
     }
     
     private void SpawnIngredient() {
