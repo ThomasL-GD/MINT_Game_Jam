@@ -19,9 +19,16 @@ public class Movement : MonoBehaviour
     [SerializeField, Range(0f, 1440f), Tooltip("the rotation of the player in °/s")]
     private float m_rotationSpeed = 360f;
 
+    [SerializeField, Tooltip("The Playable Character's animator in yeet/gucci")]
+    private Animator m_animator;
+    
     [SerializeField,Tooltip("the sprinting key")] private KeyCode m_sprintKey;
     /// <summary/> the player's rigidbody
     Rigidbody m_rigidBody;
+
+    [SerializeField] private Transform m_particleEffect;
+
+    private static readonly int m_runHashCode = Animator.StringToHash("Running");
 
     void Awake () => m_rigidBody = GetComponent<Rigidbody>();
 
@@ -31,6 +38,7 @@ public class Movement : MonoBehaviour
 
     private Vector3 SetVelocityFromInput(Vector3 p_currentVelocity)
     {
+        
         bool sprinting = Input.GetKey(m_sprintKey);
         float maxSpeed = sprinting?m_maxSpeedSprint:m_maxSpeed;
         float maxAcceleration = sprinting?m_maxAccelerationSprint:m_maxAcceleration;
@@ -51,19 +59,22 @@ public class Movement : MonoBehaviour
         
         
         RotatePlayerTowardsInput(new Vector3(playerInput.x,0,playerInput.y));
+        
+        UpdateParticleEffect(p_currentVelocity.magnitude);
         // Returning the calculated Velocity
         return p_currentVelocity;
+        
     }
 
     private void RotatePlayerTowardsInput(Vector3 p_playerInput)
     {
         if(p_playerInput.magnitude < .01f)
         {
-            PlayIdleAnimation();
+            m_animator.SetBool(m_runHashCode,false);
             return;
         }
         
-        PlayRunningAnimation();
+        m_animator.SetBool(m_runHashCode,true);
 
         Quaternion targetRotation = Quaternion.LookRotation(p_playerInput.normalized*2f);
  
@@ -77,12 +88,8 @@ public class Movement : MonoBehaviour
 
     }
     
-    private void PlayRunningAnimation()
+    private void UpdateParticleEffect(float m_currentSpeed)
     {
-        
-    }
-    private void PlayIdleAnimation()
-    {
-        
+        m_particleEffect.localScale = Vector3.one * (m_currentSpeed / m_maxSpeedSprint);
     }
 }

@@ -1079,9 +1079,85 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2736830145490270178, guid: 9c1c1f16800c5ed40a5a07b158580da7, type: 3}
-      propertyPath: m_CollisionDetection
-      value: 2
+    - target: {fileID: 6869473400152083989, guid: 9c1c1f16800c5ed40a5a07b158580da7, type: 3}
+      propertyPath: lengthInSec
+      value: 0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 6869473400152083989, guid: 9c1c1f16800c5ed40a5a07b158580da7, type: 3}
+      propertyPath: ShapeModule.angle
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 6869473400152083989, guid: 9c1c1f16800c5ed40a5a07b158580da7, type: 3}
+      propertyPath: ShapeModule.arc.mode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6869473400152083989, guid: 9c1c1f16800c5ed40a5a07b158580da7, type: 3}
+      propertyPath: InitialModule.startSize.scalar
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6869473400152083989, guid: 9c1c1f16800c5ed40a5a07b158580da7, type: 3}
+      propertyPath: InitialModule.startSpeed.scalar
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6869473400152083989, guid: 9c1c1f16800c5ed40a5a07b158580da7, type: 3}
+      propertyPath: InitialModule.startSize.minScalar
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6869473400152083989, guid: 9c1c1f16800c5ed40a5a07b158580da7, type: 3}
+      propertyPath: InitialModule.startSpeed.minScalar
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6869473400152083989, guid: 9c1c1f16800c5ed40a5a07b158580da7, type: 3}
+      propertyPath: InitialModule.startSize.minMaxState
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6869473400152083989, guid: 9c1c1f16800c5ed40a5a07b158580da7, type: 3}
+      propertyPath: InitialModule.gravityModifier.scalar
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6869473400152083989, guid: 9c1c1f16800c5ed40a5a07b158580da7, type: 3}
+      propertyPath: InitialModule.startSizeY.minMaxState
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6869473400152083989, guid: 9c1c1f16800c5ed40a5a07b158580da7, type: 3}
+      propertyPath: InitialModule.startSizeZ.minMaxState
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6869473400152083989, guid: 9c1c1f16800c5ed40a5a07b158580da7, type: 3}
+      propertyPath: InitialModule.startSpeed.minMaxState
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6869473400152083990, guid: 9c1c1f16800c5ed40a5a07b158580da7, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6869473400152083990, guid: 9c1c1f16800c5ed40a5a07b158580da7, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.477
+      objectReference: {fileID: 0}
+    - target: {fileID: 6869473400152083990, guid: 9c1c1f16800c5ed40a5a07b158580da7, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.093
+      objectReference: {fileID: 0}
+    - target: {fileID: 6869473400152083990, guid: 9c1c1f16800c5ed40a5a07b158580da7, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.5795611
+      objectReference: {fileID: 0}
+    - target: {fileID: 6869473400152083990, guid: 9c1c1f16800c5ed40a5a07b158580da7, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.8149288
+      objectReference: {fileID: 0}
+    - target: {fileID: 6869473400152083990, guid: 9c1c1f16800c5ed40a5a07b158580da7, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6869473400152083990, guid: 9c1c1f16800c5ed40a5a07b158580da7, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6869473400152083990, guid: 9c1c1f16800c5ed40a5a07b158580da7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 109.16101
       objectReference: {fileID: 0}
     - target: {fileID: 8076915217808495799, guid: 9c1c1f16800c5ed40a5a07b158580da7, type: 3}
       propertyPath: m_Name
