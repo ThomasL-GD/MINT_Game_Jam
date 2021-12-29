@@ -93,6 +93,8 @@ public class GameManager : MonoBehaviour {
                 m_visualHealthPoints[i].SetActive(false);
             }
         }
+        
+        ChangeScore(1);
     }
 
     private void Start() {
@@ -253,7 +255,7 @@ public class GameManager : MonoBehaviour {
         SceneManager.LoadScene(2);
     }
 
-    public void ChangeScore(int p_scoreToAdd) {
+    public void ChangeScore(int p_scoreToAdd = 1) {
         m_score += p_scoreToAdd;
         m_scoreMesh.text = m_score.ToString();
     }

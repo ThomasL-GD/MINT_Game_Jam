@@ -153,6 +153,9 @@ public class IngredientsPicker : MonoBehaviour {
     }
 
     private IEnumerator Blink() {
+
+        Physics.IgnoreLayerCollision(gameObject.layer, 7);
+        
         yield return new WaitForSeconds(m_blinkTiming);
         m_isTransparent = !m_isTransparent;
 
@@ -161,6 +164,8 @@ public class IngredientsPicker : MonoBehaviour {
         
         if(m_elapsedBlinkingTime < m_totalBlinkTime)StartCoroutine(Blink());
         else {
+
+            Physics.IgnoreLayerCollision(gameObject.layer, 7, false);
             m_isTransparent = false;
             m_mr.enabled = !m_isTransparent;
             m_elapsedBlinkingTime = 0f;
