@@ -34,21 +34,18 @@ public class OvenBehavior : MonoBehaviour {
         //if(m_numberOfCakeToSpawn > m_potentialSpawnPos.Length) Debug.LogWarning("Not enough spawn positions for the amount of cakes you want to spawn...");
     }
 
-    public void AddIngredient(Ingredient p_ingredient) {
+    private void AddIngredient(Ingredient p_ingredient, bool p_checkForCakeCompletion = false) {
         m_ingredientsValidated[(int) p_ingredient.type] = true;
         m_ingredientsIn.Add(p_ingredient);
         p_ingredient.go.transform.SetParent(transform);
-        p_ingredient.go.transform.localPosition = m_ingredientLocalPosition[NumberOfIngredientsValidated()];
+        p_ingredient.go.transform.localPosition = m_ingredientLocalPosition[(int)p_ingredient.type];
 
-        if (!CheckForCake()) RunAway();
+        if (p_checkForCakeCompletion) CheckForCake();
     }
     
     public void AddIngredients(Ingredient[] p_ingredients) {
         foreach (Ingredient ing in p_ingredients) {
-            m_ingredientsValidated[(int) ing.type] = true;
-            m_ingredientsIn.Add(ing);
-            ing.go.transform.SetParent(transform);
-            ing.go.transform.localPosition = m_ingredientLocalPosition[(int)ing.type];
+            AddIngredient(ing);
         }
         if (!CheckForCake()) RunAway();
     }
@@ -62,6 +59,7 @@ public class OvenBehavior : MonoBehaviour {
             if(!bo) return false;
         }
         
+        GameManager.singleton.SpawnAllIngredient();
         StartBaking();
         return true;
     }
