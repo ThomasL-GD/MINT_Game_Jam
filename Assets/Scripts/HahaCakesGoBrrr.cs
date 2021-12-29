@@ -31,6 +31,13 @@ public class HahaCakesGoBrrr : MonoBehaviour
 
     [SerializeField] private TextMeshProUGUI m_restartText;
     
+    [ContextMenu("reset variables")]
+    private void ResetVar()
+    {
+        PlayerPrefs.DeleteAll();
+        PlayerPrefs.Save();
+    }
+    
     private void Start()
     {
         FunctionToMakeCakesGoBrr(PlayerPrefs.GetInt("LastScore"));
@@ -66,7 +73,7 @@ public class HahaCakesGoBrrr : MonoBehaviour
                 m_highScoreAudio.Play();
                 m_ClappingAudio.Play();
                 m_text.text = $"Game Over\nScore {cakesBrrrd}\n{highScoreText}";
-                yield return new WaitForSeconds(1f);
+                yield return new WaitForSeconds(1.5f);
             }
             else
             {
@@ -78,6 +85,7 @@ public class HahaCakesGoBrrr : MonoBehaviour
         
         if(PlayerPrefs.GetInt("NewHighScore") == 1) PlayerPrefs.SetInt("HighScore", p_Score);
 
+        PlayerPrefs.Save();
         m_canRestart = true;
         m_restartText.gameObject.SetActive(true);
     }

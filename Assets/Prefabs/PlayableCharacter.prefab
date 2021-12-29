@@ -590,11 +590,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_maxSpeed: 10
   m_maxAcceleration: 15
-  m_maxSpeedSprint: 20
+  m_maxSpeedSprint: 10
   m_maxAccelerationSprint: 15
   m_rotationSpeed: 10
   m_animator: {fileID: 1977884199}
-  m_sprintKey: 32
+  m_sprintKey: 0
   m_particleEffect: {fileID: 6371778203755355720}
 --- !u!114 &8235070580715223614
 MonoBehaviour:
@@ -608,6 +608,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fcf8506fc8a1833499afb97aedafeed0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_ouchSound: {fileID: 0}
+  m_pickupSound: {fileID: 0}
+  m_putDownSound: {fileID: 0}
   m_loadingPosition: {fileID: 2742725074037822340}
   m_eggRbPrefab: {fileID: 7432137770768715038, guid: 2d3e9c375888a9d49965fd94a31d7423, type: 3}
   m_chocolateRbPrefab: {fileID: 7659275718161034727, guid: d9e3b3412ffdc5947b1fbbc0d31d6c69, type: 3}
