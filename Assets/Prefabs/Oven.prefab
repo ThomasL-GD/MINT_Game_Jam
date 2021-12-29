@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3516734615744754571}
   - component: {fileID: 532031778299722798}
   - component: {fileID: 2343806244618684644}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: P_Oven_Drawer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -96,7 +96,7 @@ GameObject:
   - component: {fileID: 1625595483922730600}
   - component: {fileID: 3065053077706957116}
   - component: {fileID: 6918142292543510579}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Oven
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -165,7 +165,7 @@ GameObject:
   - component: {fileID: 7701523690988331726}
   - component: {fileID: 6723475581856542059}
   - component: {fileID: 8838985119965551009}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: P_Oven_Core
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -251,7 +251,7 @@ GameObject:
   - component: {fileID: 9073705294796301368}
   - component: {fileID: 5351293892428114845}
   - component: {fileID: 7901400862964440919}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: P_Oven_Door
   m_TagString: Untagged
   m_Icon: {fileID: 0}
