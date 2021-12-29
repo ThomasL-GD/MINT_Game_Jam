@@ -18,6 +18,8 @@ public class OvenBehavior : MonoBehaviour {
     
     [SerializeField] private Vector3[] m_ingredientLocalPosition = null;
 
+    [SerializeField] private GameObject m_particleEffectGo;
+    
     private NavMeshAgent m_navMeshAgent;
     private int m_cakesSpawned = 0;
 
@@ -60,6 +62,7 @@ public class OvenBehavior : MonoBehaviour {
     public void RunAway(bool p_forceChangePath) {
         if(!p_forceChangePath && !(m_navMeshAgent.remainingDistance > m_navMeshAgent.stoppingDistance || m_navMeshAgent.pathStatus != NavMeshPathStatus.PathComplete)) return;
         SetRandomPathToGo();
+        m_particleEffectGo.SetActive(true);
     }
 
     private bool CheckForCake() {
@@ -76,6 +79,7 @@ public class OvenBehavior : MonoBehaviour {
 
     private void StartBaking() {
         
+        m_particleEffectGo.SetActive(true);
         for (int i = 0; i < m_ingredientsValidated.Length; i++) m_ingredientsValidated[i] = false;
         foreach (Ingredient ing in m_ingredientsIn) Destroy(ing.go);
         m_ingredientsIn.Clear();
@@ -113,6 +117,11 @@ public class OvenBehavior : MonoBehaviour {
         Vector2 firstCorner = GameManager.singleton.wolrdPosOfFirstCorner;
         Vector2 lastCorner = GameManager.singleton.wolrdPosOfLastCorner;
         m_navMeshAgent.destination = new Vector3(Random.Range(firstCorner.x, lastCorner.x), transform.position.y, Random.Range(firstCorner.y, lastCorner.y));
+    }
+
+    private void Update()
+    {
+        if(Vector3.Distance(transform.position,m_navMeshAgent.destination) <1) m_particleEffectGo.SetActive(false);
     }
 
     private int NumberOfIngredientsValidated() {

@@ -1091,5 +1091,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Oven
       objectReference: {fileID: 0}
+    - target: {fileID: 6154531961532187012, guid: ff5af595f68162a4da3a59d2b92db8fc, type: 3}
+      propertyPath: m_particleEffectGo
+      value: 
+      objectReference: {fileID: 4534238879283485043}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ff5af595f68162a4da3a59d2b92db8fc, type: 3}
+--- !u!1 &4534238879283485043 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5683347293313908133, guid: ff5af595f68162a4da3a59d2b92db8fc, type: 3}
+  m_PrefabInstance: {fileID: 4534238879283485042}
+  m_PrefabAsset: {fileID: 0}
