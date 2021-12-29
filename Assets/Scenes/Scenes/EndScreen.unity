@@ -2070,10 +2070,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_rect:
     serializedVersion: 2
-    x: -2.75
-    y: 4.15
-    width: 12
-    height: 5
+    x: -1.9
+    y: 4.76
+    width: 9.73
+    height: 3.71
   m_text: {fileID: 803919844}
   m_cakePrefab: {fileID: 8841726736650186549, guid: 6e1416de634b5724393720c702a82719, type: 3}
   m_timeBetweenCakes: 0.5
