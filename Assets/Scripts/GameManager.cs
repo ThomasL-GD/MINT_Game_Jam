@@ -217,32 +217,33 @@ public class GameManager : MonoBehaviour {
     }
 
     public void ChangeHp(int p_change) {
-        bool mustDisappear = false;
         switch (p_change) {
             case 0:
                 Debug.LogWarning("Aaand I say to myseeelf... what the fuck ?!", this);
                 return;
             case > 0: {
-                mustDisappear = false;
+                for (int i = m_currentHealth ; i != p_change + m_currentHealth ; i ++) {
+                    Debug.Log($"gain : {i}");
+                    m_visualHealthPoints[i].SetActive(true);
+                    BlinkHP script = m_visualHealthPoints[i].GetComponent<BlinkHP>();
+                    script.Initialize(false);
+                }
                 break;
             }
             case < 0:
-                mustDisappear = true;
+                for (int i = m_currentHealth -1; i != p_change + m_currentHealth -1; i --) {
+                    m_visualHealthPoints[i].SetActive(true);
+                    BlinkHP script = m_visualHealthPoints[i].GetComponent<BlinkHP>();
+                    script.Initialize(true);
+                }
                 break;
-        }
-
-        int incrementation = mustDisappear ? -1 : 1;
-        for (int i = m_currentHealth-1; i != p_change + m_currentHealth-1; i += incrementation) {
-            if(!mustDisappear) m_visualHealthPoints[i].SetActive(true);
-            BlinkHP script = m_visualHealthPoints[i].GetComponent<BlinkHP>();
-            script.Initialize(mustDisappear);
         }
 
         m_currentHealth += p_change;
         Debug.Log($"current health : {m_currentHealth}");
 
         
-        if (m_currentHealth >= 0) return;
+        if (m_currentHealth > 0) return;
         
         PlayerPrefs.SetInt("NewHighScore", PlayerPrefs.GetInt("HighScore") < m_score?1:0);
             

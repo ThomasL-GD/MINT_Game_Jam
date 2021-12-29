@@ -25,10 +25,13 @@ public class BlinkHP : MonoBehaviour {
 
     private IEnumerator Blink() {
         yield return new WaitForSeconds(m_blinkTime);
+
+        if (!m_isBlinking) yield break;
+        
         m_isTransparent = !m_isTransparent;
 
         m_mr.enabled = !m_isTransparent;
-        if(m_isBlinking)StartCoroutine(Blink());
+        StartCoroutine(Blink());
     }
 
     private IEnumerator DeathCountDown(bool p_mustDisappear) {
