@@ -26,14 +26,12 @@ public class NavMeshGoesBrrrrrrrrrr : MonoBehaviour {
     private void Start() {
         m_ismTransformToFollowNull = m_transformToFollow == null;
         m_meshAgent = GetComponent<NavMeshAgent>();
+        m_meshAgent.updateRotation = true;
         StartCoroutine(JumpTimer());
-        m_meshAgent.speed = 0.00001f;
     }
 
     private void Update() {
         if (m_ismTransformToFollowNull) return;
-
-        m_meshAgent.destination = m_transformToFollow.position;
         
         if (!m_isJumping) return;
 
