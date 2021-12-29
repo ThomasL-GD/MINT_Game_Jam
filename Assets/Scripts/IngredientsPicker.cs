@@ -24,5 +24,17 @@ public class IngredientsPicker : MonoBehaviour {
                 p_other.gameObject.AddComponent<Rigidbody>();
             }
         }
+        else if (p_other.gameObject.layer == 7) {
+            foreach (Ingredient ingredient in m_ingredientsLoaded) {
+                Destroy(ingredient.go.GetComponent<Rigidbody>());
+                Collider[] colliders = ingredient.go.GetComponents<Collider>();
+                foreach (Collider col in colliders) {
+                    Destroy(col);
+                }
+
+                m_ingredientsLoaded.Remove(ingredient);
+                ingredient.go.AddComponent<BlinkAndDestroy>();
+            }
+        }
     }
 }

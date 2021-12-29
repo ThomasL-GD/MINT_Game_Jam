@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 754637047402433472}
   - component: {fileID: 4455988507198522469}
   - component: {fileID: 1887622569496572079}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: P_Cake_Bottom
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -96,7 +96,7 @@ GameObject:
   - component: {fileID: 258325140203329674}
   - component: {fileID: 3763349910356776751}
   - component: {fileID: 1431842882846761957}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: P_Cake_Top
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -184,7 +184,7 @@ GameObject:
   - component: {fileID: 2384031679897518024}
   - component: {fileID: 5321863817037893178}
   - component: {fileID: 6565016745639722608}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: CakeDude
   m_TagString: Untagged
   m_Icon: {fileID: 2488908585195742037, guid: 0000000000000000d000000000000000, type: 0}

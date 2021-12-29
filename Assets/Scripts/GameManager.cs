@@ -73,6 +73,14 @@ public class GameManager : MonoBehaviour {
             if(walls.isHorizontal) BuildLineOfWallsX(walls.otherAxeCoordinate, walls.begin, walls.end);
             else BuildLineOfWallsY(walls.otherAxeCoordinate, walls.begin, walls.end);
         }
+        
+        Raoul();
+        Raoul();
+        Raoul();
+        Raoul();
+        Raoul();
+        Raoul();
+        Raoul();
     }
 
     private void OnValidate() {
