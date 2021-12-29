@@ -170,7 +170,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_prefabCake: {fileID: 3414984906908890239, guid: 903fefc57b3cbb74bb9de7cda15f6c76, type: 3}
   m_numberOfCakeToSpawn: 3
-  m_spawnInterval: 1
+  m_spawnInterval: 3
   m_ingredientLocalPosition:
   - {x: -0.134, y: 1.0794055, z: 0.131}
   - {x: -0.182, y: 1.0794055, z: -0.214}
@@ -187,7 +187,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 9
+  m_Speed: 3.5
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
