@@ -20,9 +20,6 @@ public class GameManager : MonoBehaviour {
     [SerializeField] private GameObject m_prefabWall = null;
 
     [SerializeField] [Range(0.1f, 2f)] public float m_wallRiseTime = 0.5f;
-
-    [SerializeField] [Tooltip("For testing purposes only")] private int m_wallXIndex = 0;
-    [SerializeField] [Tooltip("For testing purposes only")] private int m_wallYIndex = 0;
     
     [SerializeField] private SOTileValues m_tileValues = null;
 
@@ -31,6 +28,13 @@ public class GameManager : MonoBehaviour {
     [SerializeField, Range(0f, 5f)] private float m_ingredientYOffset = 1f;
 
     [SerializeField] private WallsToBuild[] m_firstWallsToBuild;
+
+    [SerializeField, Range(1,10)] private int m_maxHealth = 3;
+
+    [SerializeField] private GameObject[] m_visualHealthPoints;
+
+    [HideInInspector] private int m_currentHealth = 3;
+    
 
     private bool[,] m_walls = null;
     private Transform m_wallsParent = null;
@@ -71,6 +75,16 @@ public class GameManager : MonoBehaviour {
 
         m_wallsParent = Instantiate(new GameObject(name = "Walls")).transform;
         m_walls = new bool[m_tileValues.m_numberOfXTiles, m_tileValues.m_numberOfYTiles];
+
+        m_currentHealth = m_maxHealth;
+        
+        if(m_visualHealthPoints.Length < m_maxHealth)Debug.LogError("There's not enough visual health points !");
+        else {
+            //We set the correct amount of health point in case there are too many
+            for (int i = m_visualHealthPoints.Length - 1; i >= m_maxHealth ; i--) {
+                m_visualHealthPoints[i].SetActive(false);
+            }
+        }
     }
 
     private void Start() {
@@ -91,11 +105,6 @@ public class GameManager : MonoBehaviour {
             Debug.LogWarning("Don't change the length of this array, there's nothing more or less to show !");
             m_ingredientsPrefabs = new GameObject[Enum.GetNames(typeof(IngredientList)).Length];
         }
-    }
-
-    [ContextMenu("Bob, build !")]
-    public void Bob() {
-        BuildAWall(m_wallXIndex, m_wallYIndex);
     }
 
     private void BuildLineOfWallsX(int p_y, int p_begin, int p_end) {
@@ -177,6 +186,14 @@ public class GameManager : MonoBehaviour {
         m_tileValues.m_center = p_center;
     }
 
+    public void LoseHp() {
+        m_currentHealth --;
+
+        BlinkAndDestroy script = m_visualHealthPoints[m_currentHealth].AddComponent<BlinkAndDestroy>();
+        script.isActuallyKilling = false;
+    }
+
+    
     private void OnDrawGizmos() {
         if (m_firstWallsToBuild.Length < 1) return;
     }
