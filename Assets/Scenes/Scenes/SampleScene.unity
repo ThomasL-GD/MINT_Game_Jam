@@ -11187,7 +11187,7 @@ MonoBehaviour:
     otherAxeCoordinate: 11
     begin: 8
     end: 9
-  m_startHealth: 3
+  m_startHealth: 2
   m_visualHealthPoints:
   - {fileID: 613843995}
   - {fileID: 1528634129}
@@ -13250,7 +13250,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3414984906908890239, guid: 903fefc57b3cbb74bb9de7cda15f6c76, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5321863817037893178, guid: 903fefc57b3cbb74bb9de7cda15f6c76, type: 3}
       propertyPath: m_transformToFollow
