@@ -3,15 +3,18 @@ using System.Collections;
 using System.Collections.Generic;
 using Ingredients;
 using UnityEngine;
+using IngredientWithGo;
+
+namespace IngredientWithGo {
+    public struct Ingredient {
+        public IngredientList type;
+        public GameObject go;
+    }
+}
 
 public class IngredientsPicker : MonoBehaviour {
 
     [SerializeField] private Transform m_loadingPosition = null;
-
-    private struct Ingredient {
-        public IngredientList type;
-        public GameObject go;
-    }
 
     private List<Ingredient> m_ingredientsLoaded = new List<Ingredient>();
 
@@ -42,8 +45,19 @@ public class IngredientsPicker : MonoBehaviour {
             }
             
             case 8: {
-                
-
+                if (p_other.gameObject.TryGetComponent(out OvenBehavior script)) {
+                    Ingredient[] ingredientsToGive = new Ingredient[m_ingredientsLoaded.Count];
+                    for (int i = 0; i < m_ingredientsLoaded.Count; i++) {
+                        ingredientsToGive[i] = m_ingredientsLoaded[i];
+                        Destroy(m_ingredientsLoaded[i].go.GetComponent<Rigidbody>());
+                        Collider[] colliders = m_ingredientsLoaded[i].go.GetComponents<Collider>();
+                        foreach (Collider col in colliders) Destroy(col);
+                    }
+                    script.AddIngredients(ingredientsToGive);
+                    m_ingredientsLoaded.Clear();
+                    
+                    
+                }
                 break;
             }
         }

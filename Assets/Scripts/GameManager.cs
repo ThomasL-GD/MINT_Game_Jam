@@ -14,6 +14,8 @@ namespace Ingredients {
 
 public class GameManager : MonoBehaviour {
 
+    [SerializeField] public Transform m_chefTransform = null;
+    
     [SerializeField] private GameObject m_prefabWall = null;
 
     [SerializeField] [Range(0.1f, 2f)] public float m_wallRiseTime = 0.5f;
@@ -31,6 +33,9 @@ public class GameManager : MonoBehaviour {
 
     private bool[,] m_walls = null;
     private Transform m_wallsParent = null;
+
+    public Vector2 wolrdPosOfFirstCorner;
+    public Vector2 wolrdPosOfLastCorner;
     
 
     [Serializable]
@@ -73,7 +78,19 @@ public class GameManager : MonoBehaviour {
             if(walls.isHorizontal) BuildLineOfWallsX(walls.otherAxeCoordinate, walls.begin, walls.end);
             else BuildLineOfWallsY(walls.otherAxeCoordinate, walls.begin, walls.end);
         }
+
+        wolrdPosOfFirstCorner = new Vector2(m_tileValues.m_center.x - ((m_tileValues.m_numberOfXTiles * m_tileValues.m_sizeOfATile) / 2f), (m_tileValues.m_center.z - ((m_tileValues.m_numberOfYTiles * m_tileValues.m_sizeOfATile) / 2f)));
+        wolrdPosOfLastCorner = new Vector2(wolrdPosOfFirstCorner.x + 2*(m_tileValues.m_center.x - wolrdPosOfFirstCorner.x), wolrdPosOfFirstCorner.y + 2*(m_tileValues.m_center.z - wolrdPosOfFirstCorner.y));
         
+        Raoul();
+        Raoul();
+        Raoul();
+        Raoul();
+        Raoul();
+        Raoul();
+        Raoul();
+        Raoul();
+        Raoul();
         Raoul();
         Raoul();
         Raoul();
@@ -137,7 +154,7 @@ public class GameManager : MonoBehaviour {
 
     private void IndexesToPositions(int p_x, int p_y, out float x, out float y) {
         x = (m_tileValues.m_center.x - ((m_tileValues.m_numberOfXTiles * m_tileValues.m_sizeOfATile) / 2f))  +  p_x * m_tileValues.m_sizeOfATile  +  m_tileValues.m_sizeOfATile/2f;
-        y = (m_tileValues.m_center.y - ((m_tileValues.m_numberOfYTiles * m_tileValues.m_sizeOfATile) / 2f))  +  p_y * m_tileValues.m_sizeOfATile  +  m_tileValues.m_sizeOfATile/2f;
+        y = (m_tileValues.m_center.z - ((m_tileValues.m_numberOfYTiles * m_tileValues.m_sizeOfATile) / 2f))  +  p_y * m_tileValues.m_sizeOfATile  +  m_tileValues.m_sizeOfATile/2f;
     }
 
     public void SetTileValues(int p_numberOfXTiles, int p_numberOfYTiles, float p_sizeOfATile, Vector3 p_center) {

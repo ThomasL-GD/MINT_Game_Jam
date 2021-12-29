@@ -4,7 +4,7 @@ using UnityEngine.AI;
 
 public class NavMeshGoesBrrrrrrrrrr : MonoBehaviour {
 
-    [SerializeField] private Transform m_transformToFollow = null;
+    [SerializeField] public Transform m_transformToFollow = null;
 
     [Header("Jump")]
     [SerializeField] [Range(0.1f, 10f)] private float m_jumpCooldown = 1f;
