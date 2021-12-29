@@ -67,6 +67,7 @@ public class OvenBehavior : MonoBehaviour {
             if(!bo) return false;
         }
         
+        GameManager.singleton.ChangeHp(1);
         GameManager.singleton.RegenerateWalls();
         GameManager.singleton.SpawnAllIngredient();
         StartBaking();

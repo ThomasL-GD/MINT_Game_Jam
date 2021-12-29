@@ -56,7 +56,7 @@ public class IngredientsPicker : MonoBehaviour {
                     StartCoroutine(Blink());
 
                 if (m_ingredientsLoaded.Count < 1) {
-                    GameManager.singleton.LoseHp();
+                    GameManager.singleton.ChangeHp(-1);
                     break;
                 }
                 else {

@@ -127,14 +127,12 @@ public class GameManager : MonoBehaviour {
     }
 
     private void BuildLineOfWallsX(int p_y, int p_begin, int p_end) {
-        Debug.Log($"X wall : {p_y}       {p_begin}  {p_end}");
         for (int i = 0; i <= Mathf.Abs(p_end - p_begin); i++) {
             BuildAWall(p_begin + i, p_y);
         }
     }
 
     private void BuildLineOfWallsY(int p_x, int p_begin, int p_end) {
-        Debug.Log($"Y wall : {p_x}       {p_begin}  {p_end}");
         for (int i = 0; i <= Mathf.Abs(p_end - p_begin); i++) {
             BuildAWall(p_x, p_begin + i);
         }
@@ -217,10 +215,30 @@ public class GameManager : MonoBehaviour {
         m_tileValues.m_center = p_center;
     }
 
-    public void LoseHp() {
-        m_currentHealth --;
-
-        m_visualHealthPoints[m_currentHealth].SetActive(false);
+    public void ChangeHp(int p_change = -1) {
+        bool mustDisappear = false;
+        switch (p_change) {
+            case 0:
+                Debug.LogWarning("Aaand I say to myseeelf... what the fuck ?!", this);
+                return;
+            case > 0: {
+                mustDisappear = false;
+                break;
+            }
+            case < 0:
+                mustDisappear = true;
+                break;
+        }
+        
+        for (int i = m_currentHealth; i != p_change + m_currentHealth; i += mustDisappear? -1 : 1) {
+            if(!mustDisappear) m_visualHealthPoints[i].SetActive(true);
+            BlinkHP script = m_visualHealthPoints[i].GetComponent<BlinkHP>();
+            script.Initialize(mustDisappear);
+        }
+        
+        
+        m_currentHealth += p_change;
+        Debug.Log($"current health : {m_currentHealth}");
     }
 
     public void ChangeScore(int p_scoreToAdd) {
