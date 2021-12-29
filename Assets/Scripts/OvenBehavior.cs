@@ -26,10 +26,14 @@ public class OvenBehavior : MonoBehaviour {
     private bool[] m_ingredientsValidated = null;
     private List<Ingredient> m_ingredientsIn = new List<Ingredient>();
 
+    private Animator m_animator = null;
+    private static readonly int NomNom = Animator.StringToHash("NomNom");
+
     private void OnEnable() {
         m_ingredientsValidated = new bool[Enum.GetValues(typeof(IngredientList)).Length];
         for (int i = 0; i < m_ingredientsValidated.Length; i++) m_ingredientsValidated[i] = false;
         m_navMeshAgent = GetComponent<NavMeshAgent>();
+        m_animator = GetComponent<Animator>();
 
         //if(m_numberOfCakeToSpawn > m_potentialSpawnPos.Length) Debug.LogWarning("Not enough spawn positions for the amount of cakes you want to spawn...");
     }
@@ -39,6 +43,8 @@ public class OvenBehavior : MonoBehaviour {
         m_ingredientsIn.Add(p_ingredient);
         p_ingredient.go.transform.SetParent(transform);
         p_ingredient.go.transform.localPosition = m_ingredientLocalPosition[(int)p_ingredient.type];
+        
+        m_animator.SetTrigger(NomNom);
 
         if (p_checkForCakeCompletion) CheckForCake();
     }
