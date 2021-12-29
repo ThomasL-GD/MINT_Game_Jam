@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using Ingredients;
 using TMPro;
+using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using Random = UnityEngine.Random;
@@ -133,17 +134,17 @@ public class GameManager : MonoBehaviour {
 
     private void BuildLineOfWallsX(int p_y, int p_begin, int p_end) {
         for (int i = 0; i <= Mathf.Abs(p_end - p_begin); i++) {
-            BuildAWall(p_begin + i, p_y);
+            BuildAWall(p_begin + i, p_y, true);
         }
     }
 
     private void BuildLineOfWallsY(int p_x, int p_begin, int p_end) {
         for (int i = 0; i <= Mathf.Abs(p_end - p_begin); i++) {
-            BuildAWall(p_x, p_begin + i);
+            BuildAWall(p_x, p_begin + i, false);
         }
     }
 
-    private void BuildAWall(int p_x, int p_y) {
+    private void BuildAWall(int p_x, int p_y, bool p_horizontal) {
         if (m_walls[p_x, p_y]) {
             Debug.LogWarning($"there's already a wall here ! {p_x} {p_y}", this);
             return;
@@ -155,7 +156,10 @@ public class GameManager : MonoBehaviour {
         
         IndexesToPositions(p_x, p_y, out posX, out posY);
 
+        Vector3 rotation = Vector3.up * (p_horizontal ? 0f : 90f);
+        
         GameObject go = Instantiate(m_prefabWall, new Vector3(posX, m_tileValues.m_center.y, posY), m_prefabWall.transform.rotation, m_wallsParent);
+        go.transform.Rotate(rotation);
         go.AddComponent<WallBehavior>();
     }
 
