@@ -11,10 +11,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: RigidBodyEgg
       objectReference: {fileID: 0}
-    - target: {fileID: 5068210258822840768, guid: ece3e84b6b3121642a2f74c8c8807ac6, type: 3}
-      propertyPath: m_Layer
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 5556939240669977466, guid: ece3e84b6b3121642a2f74c8c8807ac6, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -61,7 +57,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 4761008023994747826, guid: ece3e84b6b3121642a2f74c8c8807ac6, type: 3}
-    - {fileID: -8880573123433345052, guid: ece3e84b6b3121642a2f74c8c8807ac6, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: ece3e84b6b3121642a2f74c8c8807ac6, type: 3}
 --- !u!1 &7432137770768715038 stripped
 GameObject:

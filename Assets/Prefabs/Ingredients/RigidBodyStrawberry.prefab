@@ -15,10 +15,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: RigidBodyStrawberry
       objectReference: {fileID: 0}
-    - target: {fileID: 8400233068758859460, guid: 6b696f7ef57656541b4739f1919dbd58, type: 3}
-      propertyPath: m_Layer
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 9212200812546892926, guid: 6b696f7ef57656541b4739f1919dbd58, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -65,7 +61,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 8130130417807389878, guid: 6b696f7ef57656541b4739f1919dbd58, type: 3}
-    - {fileID: 3893261629670027488, guid: 6b696f7ef57656541b4739f1919dbd58, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 6b696f7ef57656541b4739f1919dbd58, type: 3}
 --- !u!1 &3332137619066249607 stripped
 GameObject:

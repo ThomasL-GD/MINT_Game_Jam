@@ -11,10 +11,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: RigidBodyFlour
       objectReference: {fileID: 0}
-    - target: {fileID: 484478655549984285, guid: ced49429995db894594b11cfd0afc8a5, type: 3}
-      propertyPath: m_Layer
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 1005119008453727399, guid: ced49429995db894594b11cfd0afc8a5, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -61,7 +57,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 215802483514885231, guid: ced49429995db894594b11cfd0afc8a5, type: 3}
-    - {fileID: 4912597535411879993, guid: ced49429995db894594b11cfd0afc8a5, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: ced49429995db894594b11cfd0afc8a5, type: 3}
 --- !u!1 &1907669345094116464 stripped
 GameObject:
