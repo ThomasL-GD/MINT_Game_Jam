@@ -142,27 +142,23 @@ public class GameManager : MonoBehaviour {
 
     [ContextMenu("Raoul, eat !")]
     public void Raoul() {
-        SpawnIngredient();
+        SpawnIngredient(Random.Range(0,m_tileValues.m_numberOfXTiles), Random.Range(0,m_tileValues.m_numberOfYTiles), (IngredientList)Random.Range(0,4));
     }
     
     private void SpawnIngredient() {
-        Vector2Int rand = GetRandomAvailableTile();
-        SpawnIngredient(rand.x, rand.y);
-    }
-    
-    private void SpawnIngredient(IngredientList p_ingredient) {
-        Vector2Int rand = GetRandomAvailableTile();
-        SpawnIngredient(rand.x, rand.y, p_ingredient);
-    }
-
-    private Vector2Int GetRandomAvailableTile() {
+        float posX;
+        float posY;
         List<Vector2Int> availablePos = new List<Vector2Int>();
         for (int i = 0; i < m_walls.GetLength(0); i++) {
             for (int j = 0; j < m_walls.GetLength(1); j++) {
                 if(!m_walls[i,j])availablePos.Add(new Vector2Int(i,j));
             }
         }
-        return availablePos[Random.Range(0, availablePos.Count)];
+        Vector2Int rand = availablePos[Random.Range(0, availablePos.Count)];
+        
+        IndexesToPositions(rand.x, rand.y, out posX, out posY);
+
+        Instantiate(m_ingredientsPrefabs[Random.Range(0, m_ingredientsPrefabs.Length)], new Vector3(posX, m_tileValues.m_center.y + m_ingredientYOffset, posY), m_prefabWall.transform.rotation);
     }
     
     private void SpawnIngredient(int p_x, int p_y) {

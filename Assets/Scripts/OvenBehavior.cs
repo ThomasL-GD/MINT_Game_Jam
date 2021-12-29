@@ -74,15 +74,16 @@ public class OvenBehavior : MonoBehaviour {
     }
 
     private IEnumerator BakingWhileRunning() {
+        
+        Vector3 position = transform.position;
 
         Vector2 firstCorner = GameManager.singleton.wolrdPosOfFirstCorner;
         Vector2 lastCorner = GameManager.singleton.wolrdPosOfLastCorner;
-        m_navMeshAgent.destination = new Vector3(Random.Range(firstCorner.x, lastCorner.x), transform.position.y, Random.Range(firstCorner.y, lastCorner.y));
+        m_navMeshAgent.destination = new Vector3(Random.Range(firstCorner.x, lastCorner.x), position.y, Random.Range(firstCorner.y, lastCorner.y));
 
         yield return new WaitForSeconds(m_spawnInterval);
 
-        var transform1 = transform;
-        GameObject go = Instantiate(m_prefabCake, transform1.position, transform1.rotation);
+        GameObject go = Instantiate(m_prefabCake, position, transform.rotation);
         go.GetComponent<NavMeshGoesBrrrrrrrrrr>().m_transformToFollow = GameManager.singleton.m_chefTransform;
         m_cakesSpawned++;
 
