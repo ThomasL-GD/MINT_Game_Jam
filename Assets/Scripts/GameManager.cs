@@ -82,11 +82,8 @@ public class GameManager : MonoBehaviour {
 
         wolrdPosOfFirstCorner = new Vector2(m_tileValues.m_center.x - ((m_tileValues.m_numberOfXTiles * m_tileValues.m_sizeOfATile) / 2f), (m_tileValues.m_center.z - ((m_tileValues.m_numberOfYTiles * m_tileValues.m_sizeOfATile) / 2f)));
         wolrdPosOfLastCorner = new Vector2(wolrdPosOfFirstCorner.x + 2*(m_tileValues.m_center.x - wolrdPosOfFirstCorner.x), wolrdPosOfFirstCorner.y + 2*(m_tileValues.m_center.z - wolrdPosOfFirstCorner.y));
-        
-        SpawnIngredient(IngredientList.Egg);
-        SpawnIngredient(IngredientList.Strawberry);
-        SpawnIngredient(IngredientList.Flour);
-        SpawnIngredient(IngredientList.Chocolate);
+
+        SpawnAllIngredient();
     }
 
     private void OnValidate() {
@@ -127,23 +124,25 @@ public class GameManager : MonoBehaviour {
 
         Instantiate(m_prefabWall, new Vector3(posX, m_tileValues.m_center.y, posY), m_prefabWall.transform.rotation, m_wallsParent);
     }
-
-    [ContextMenu("Raoul, eat !")]
-    public void Raoul() {
-        SpawnIngredient();
+    
+    public void SpawnAllIngredient() {
+        SpawnIngredient(IngredientList.Egg);
+        SpawnIngredient(IngredientList.Strawberry);
+        SpawnIngredient(IngredientList.Flour);
+        SpawnIngredient(IngredientList.Chocolate);
     }
     
-    private void SpawnIngredient() {
+    public void SpawnIngredient() {
         Vector2Int rand = GetRandomAvailableTile();
         SpawnIngredient(rand.x, rand.y);
     }
     
-    private void SpawnIngredient(IngredientList p_ingredient) {
+    public void SpawnIngredient(IngredientList p_ingredient) {
         Vector2Int rand = GetRandomAvailableTile();
         SpawnIngredient(rand.x, rand.y, p_ingredient);
     }
 
-    private Vector2Int GetRandomAvailableTile() {
+    public Vector2Int GetRandomAvailableTile() {
         List<Vector2Int> availablePos = new List<Vector2Int>();
         for (int i = 0; i < m_walls.GetLength(0); i++) {
             for (int j = 0; j < m_walls.GetLength(1); j++) {
@@ -153,7 +152,7 @@ public class GameManager : MonoBehaviour {
         return availablePos[Random.Range(0, availablePos.Count)];
     }
     
-    private void SpawnIngredient(int p_x, int p_y) {
+    public void SpawnIngredient(int p_x, int p_y) {
         Array possibleIng = Enum.GetValues(typeof(IngredientList));
         SpawnIngredient(p_x, p_y, (IngredientList) possibleIng.GetValue(Random.Range(0, possibleIng.Length)));
     }

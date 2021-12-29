@@ -32,12 +32,13 @@ public class IngredientsPicker : MonoBehaviour {
                         Destroy(col);
                     }
 
-                    m_ingredientsLoaded.Remove(ingredient);
                     ingredient.go.AddComponent<BlinkAndDestroy>();
+                    
+                    GameManager.singleton.SpawnIngredient(ingredient.type);
                 }
+                m_ingredientsLoaded.Clear();
                 break;
             }
-            
         }
     }
 
