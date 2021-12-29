@@ -189,8 +189,8 @@ SkinnedMeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 903238049757006503}
   m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
   m_DynamicOccludee: 1
   m_StaticShadowCaster: 0
   m_MotionVectors: 1
@@ -336,7 +336,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4565178321336382209}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 2.246, z: 0}
+  m_LocalPosition: {x: 0, y: 2.141, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -587,8 +587,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_maxSpeed: 10
   m_maxAcceleration: 10
-  m_maxSpeedSprint: 30
-  m_maxAccelerationSprint: 10
+  m_maxSpeedSprint: 20
+  m_maxAccelerationSprint: 15
   m_rotationSpeed: 10
   m_animator: {fileID: 1977884199}
   m_sprintKey: 32
@@ -740,8 +740,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8193381359413812552}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.296, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 1.53, z: 0}
+  m_LocalScale: {x: 1.7973065, y: 1.7973065, z: 1.7973065}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8889304345885822477}

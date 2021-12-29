@@ -10,7 +10,7 @@ PrefabInstance:
     - target: {fileID: 7935000894437734158, guid: f5b57242d674b2d43946cfea66560b30, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 15303, guid: 0000000000000000f000000000000000, type: 0}
+      objectReference: {fileID: 2100000, guid: 301490d5d9045cc48a44892dbc399eb1, type: 2}
     - target: {fileID: 8439241255970510555, guid: f5b57242d674b2d43946cfea66560b30, type: 3}
       propertyPath: m_Name
       value: P_Tile_Black Variant
