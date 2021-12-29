@@ -16,20 +16,13 @@ public class IngredientsPicker : MonoBehaviour {
 
     [SerializeField] private Transform m_loadingPosition = null;
 
+    [SerializeField, Tooltip("the rigidbodied prefabs")]
+    private GameObject m_eggRbPrefab, m_chocolateRbPrefab, m_FlourRbPrefab, m_strawberryRbPrefab;
+    
     private List<Ingredient> m_ingredientsLoaded = new List<Ingredient>();
 
     private void OnCollisionEnter(Collision p_other) {
         switch (p_other.gameObject.layer) {
-            case 6: {
-                if (p_other.gameObject.TryGetComponent(out IngredientBehavior script)) {
-                    m_ingredientsLoaded.Add(new Ingredient(){type = script.m_ingredient, go = p_other.gameObject});
-                    Destroy(script);
-                    p_other.gameObject.transform.position = m_loadingPosition.position;
-                    p_other.gameObject.AddComponent<Rigidbody>();
-                }
-                break;
-            }
-            
             case 7: {
                 if(m_ingredientsLoaded.Count < 1) break;
                 foreach (Ingredient ingredient in m_ingredientsLoaded) {
@@ -45,6 +38,53 @@ public class IngredientsPicker : MonoBehaviour {
                 break;
             }
             
+        }
+    }
+
+    private void OnTriggerEnter(Collider p_other)
+    {
+                switch (p_other.gameObject.layer) {
+            case 6: {
+                if (p_other.gameObject.TryGetComponent(out IngredientBehavior script))
+                {
+                    
+                    IngredientList type = script.m_ingredient;
+
+                    GameObject prefab = new GameObject();
+                    
+                    switch (type)
+                    {
+                        case IngredientList.Egg:
+                        {
+                            prefab = m_eggRbPrefab;
+                            break;
+                        }
+                        case IngredientList.Chocolate:
+                        {
+                            prefab = m_chocolateRbPrefab;
+                            break;
+                        }
+                        case IngredientList.Flour:
+                        {
+                            prefab = m_FlourRbPrefab;
+                            break;
+                        }
+                        case IngredientList.Strawberry:
+                        {
+                            prefab = m_strawberryRbPrefab;
+                            break;
+                        }default: return;
+                    }
+
+                    GameObject ingredient = Instantiate(prefab, m_loadingPosition.position, prefab.transform.rotation);
+                    
+                    m_ingredientsLoaded.Add(new Ingredient(){type = type, go = ingredient});
+                    
+                    Destroy(p_other.gameObject);
+                }
+                break;
+            }
+
             case 8: {
                 if (p_other.gameObject.TryGetComponent(out OvenBehavior script)) {
                     Ingredient[] ingredientsToGive = new Ingredient[m_ingredientsLoaded.Count];
