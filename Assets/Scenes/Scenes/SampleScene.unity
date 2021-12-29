@@ -5542,6 +5542,37 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f5b57242d674b2d43946cfea66560b30, type: 3}
+--- !u!1 &1018920244
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1018920245}
+  m_Layer: 0
+  m_Name: InvisibleWalls
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1018920245
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1018920244}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.78378916, y: -2.0613163, z: -0.3916824}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1022386493
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7682,50 +7713,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f5b57242d674b2d43946cfea66560b30, type: 3}
---- !u!1 &1449281401 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3414984906908890239, guid: 903fefc57b3cbb74bb9de7cda15f6c76, type: 3}
-  m_PrefabInstance: {fileID: 2139829060}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1449281402
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1449281401}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 03931c03c3205884692b9a6a1d8e6ab3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_transformToFollow: {fileID: 604601352}
-  m_jumpCooldown: 1.73
-  m_jumpDuration: 0.2
-  m_jumpDistance: 1
-  m_ignoreStep: 0.2
---- !u!195 &1449281403
-NavMeshAgent:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1449281401}
-  m_Enabled: 1
-  m_AgentTypeID: 0
-  m_Radius: 0.5
-  m_Speed: 3.5
-  m_Acceleration: 8
-  avoidancePriority: 50
-  m_AngularSpeed: 120
-  m_StoppingDistance: 0
-  m_AutoTraverseOffMeshLink: 1
-  m_AutoBraking: 1
-  m_AutoRepath: 1
-  m_Height: 2
-  m_BaseOffset: 0
-  m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 4
 --- !u!1001 &1453189689
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9864,10 +9851,11 @@ MonoBehaviour:
   m_wallYIndex: 0
   m_tileValues: {fileID: 11400000, guid: 7765abccfa3dc3b41b5d6852e455cf55, type: 2}
   m_ingredientsPrefabs:
-  - {fileID: 94827468150852968, guid: ece3e84b6b3121642a2f74c8c8807ac6, type: 3}
-  - {fileID: 8698629159929946376, guid: ced49429995db894594b11cfd0afc8a5, type: 3}
-  - {fileID: 723793764237399975, guid: 533c71a7ca6df2844923516482b8d799, type: 3}
-  - {fileID: 888472865944481192, guid: bd859b7375dd39542b37142fc546be07, type: 3}
+  - {fileID: 5068210258822840768, guid: ece3e84b6b3121642a2f74c8c8807ac6, type: 3}
+  - {fileID: 484478655549984285, guid: ced49429995db894594b11cfd0afc8a5, type: 3}
+  - {fileID: 8400233068758859460, guid: 6b696f7ef57656541b4739f1919dbd58, type: 3}
+  - {fileID: 6994846206937614246, guid: bd859b7375dd39542b37142fc546be07, type: 3}
+  m_ingredientYOffset: 1
   m_firstWallsToBuild:
   - isHorizontal: 1
     otherAxeCoordinate: 2
@@ -11042,6 +11030,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CakeDude
       objectReference: {fileID: 0}
+    - target: {fileID: 5321863817037893178, guid: 903fefc57b3cbb74bb9de7cda15f6c76, type: 3}
+      propertyPath: m_transformToFollow
+      value: 
+      objectReference: {fileID: 604601352}
     - target: {fileID: 8039445214250355458, guid: 903fefc57b3cbb74bb9de7cda15f6c76, type: 3}
       propertyPath: m_RootOrder
       value: 1

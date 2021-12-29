@@ -182,6 +182,8 @@ GameObject:
   - component: {fileID: 8039445214250355458}
   - component: {fileID: 4541207693161809675}
   - component: {fileID: 2384031679897518024}
+  - component: {fileID: 5321863817037893178}
+  - component: {fileID: 6565016745639722608}
   m_Layer: 0
   m_Name: CakeDude
   m_TagString: Untagged
@@ -239,3 +241,42 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.55
   m_Center: {x: 0, y: 0.3, z: 0}
+--- !u!114 &5321863817037893178
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3414984906908890239}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03931c03c3205884692b9a6a1d8e6ab3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_transformToFollow: {fileID: 0}
+  m_jumpCooldown: 1.12
+  m_jumpDuration: 0.373
+  m_jumpDistance: 2.69
+  m_ignoreStep: 0.2
+--- !u!195 &6565016745639722608
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3414984906908890239}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
