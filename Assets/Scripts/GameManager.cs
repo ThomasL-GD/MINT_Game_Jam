@@ -33,7 +33,7 @@ public class GameManager : MonoBehaviour {
 
     [SerializeField] private GameObject[] m_visualHealthPoints;
 
-    public int currentHealth = 3;
+    [HideInInspector] private int m_currentHealth = 3;
     
 
     private bool[,] m_walls = null;
@@ -76,12 +76,12 @@ public class GameManager : MonoBehaviour {
         m_wallsParent = Instantiate(new GameObject(name = "Walls")).transform;
         m_walls = new bool[m_tileValues.m_numberOfXTiles, m_tileValues.m_numberOfYTiles];
 
-        currentHealth = m_maxHealth;
+        m_currentHealth = m_maxHealth;
         
         if(m_visualHealthPoints.Length < m_maxHealth)Debug.LogError("There's not enough visual health points !");
         else {
             //We set the correct amount of health point in case there are too many
-            for (int i = m_visualHealthPoints.Length - 1; i > m_maxHealth; i--) {
+            for (int i = m_visualHealthPoints.Length - 1; i >= m_maxHealth ; i--) {
                 m_visualHealthPoints[i].SetActive(false);
             }
         }
@@ -186,6 +186,14 @@ public class GameManager : MonoBehaviour {
         m_tileValues.m_center = p_center;
     }
 
+    public void LoseHp() {
+        m_currentHealth --;
+
+        BlinkAndDestroy script = m_visualHealthPoints[m_currentHealth].AddComponent<BlinkAndDestroy>();
+        script.isActuallyKilling = false;
+    }
+
+    
     private void OnDrawGizmos() {
         if (m_firstWallsToBuild.Length < 1) return;
     }
