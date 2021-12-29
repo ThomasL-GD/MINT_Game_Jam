@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
@@ -10,8 +11,14 @@ public class BlinkHP : MonoBehaviour {
 
     private MeshRenderer m_mr = null;
 
-    public void Initialize(bool p_mustDisappear) {
+    private bool m_isBlinking = false;
+
+    private void Start() {
         m_mr = GetComponent<MeshRenderer>();
+    }
+
+    public void Initialize(bool p_mustDisappear) {
+        m_isBlinking = true;
         StartCoroutine(Blink());
         StartCoroutine(DeathCountDown(p_mustDisappear));
     }
@@ -21,12 +28,13 @@ public class BlinkHP : MonoBehaviour {
         m_isTransparent = !m_isTransparent;
 
         m_mr.enabled = !m_isTransparent;
-        StartCoroutine(Blink());
+        if(m_isBlinking)StartCoroutine(Blink());
     }
 
     private IEnumerator DeathCountDown(bool p_mustDisappear) {
         yield return new WaitForSeconds(m_blinkDuration);
-        
+
+        m_isBlinking = false;
         m_mr.enabled = !p_mustDisappear;
         gameObject.SetActive(!p_mustDisappear);
     }
