@@ -2940,9 +2940,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5683347293313908133, guid: ff5af595f68162a4da3a59d2b92db8fc, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6108323680051942521, guid: ff5af595f68162a4da3a59d2b92db8fc, type: 3}
       propertyPath: m_Name
       value: Oven
+      objectReference: {fileID: 0}
+    - target: {fileID: 6108323680051942521, guid: ff5af595f68162a4da3a59d2b92db8fc, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ff5af595f68162a4da3a59d2b92db8fc, type: 3}
