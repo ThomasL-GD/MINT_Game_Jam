@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Ingredients;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using Random = UnityEngine.Random;
 
 namespace Ingredients {
@@ -215,7 +216,7 @@ public class GameManager : MonoBehaviour {
         m_tileValues.m_center = p_center;
     }
 
-    public void ChangeHp(int p_change = -1) {
+    public void ChangeHp(int p_change) {
         bool mustDisappear = false;
         switch (p_change) {
             case 0:
@@ -229,16 +230,28 @@ public class GameManager : MonoBehaviour {
                 mustDisappear = true;
                 break;
         }
-        
-        for (int i = m_currentHealth; i != p_change + m_currentHealth; i += mustDisappear? -1 : 1) {
+
+        int incrementation = mustDisappear ? -1 : 1;
+        for (int i = m_currentHealth-1; i != p_change + m_currentHealth-1; i += incrementation) {
             if(!mustDisappear) m_visualHealthPoints[i].SetActive(true);
             BlinkHP script = m_visualHealthPoints[i].GetComponent<BlinkHP>();
             script.Initialize(mustDisappear);
         }
-        
-        
+
         m_currentHealth += p_change;
         Debug.Log($"current health : {m_currentHealth}");
+
+        
+        if (m_currentHealth >= 0) return;
+        
+        PlayerPrefs.SetInt("NewHighScore", PlayerPrefs.GetInt("HighScore") < m_score?1:0);
+            
+        if(PlayerPrefs.GetInt("NewHighScore") == 1) PlayerPrefs.SetInt("HighScore", m_score);
+            
+        PlayerPrefs.SetInt("LastScore", m_score);
+            
+        PlayerPrefs.Save();
+        SceneManager.LoadScene(2);
     }
 
     public void ChangeScore(int p_scoreToAdd) {

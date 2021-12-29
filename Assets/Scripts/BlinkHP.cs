@@ -27,7 +27,7 @@ public class BlinkHP : MonoBehaviour {
     private IEnumerator DeathCountDown(bool p_mustDisappear) {
         yield return new WaitForSeconds(m_blinkDuration);
         
+        m_mr.enabled = !p_mustDisappear;
         gameObject.SetActive(!p_mustDisappear);
-        Destroy(this);
     }
 }
