@@ -1,10 +1,8 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using Ingredients;
 using IngredientWithGo;
-using UnityEditor.SceneManagement;
 using UnityEngine;
 using UnityEngine.AI;
 using Random = UnityEngine.Random;
@@ -21,6 +19,8 @@ public class OvenBehavior : MonoBehaviour {
 
     private NavMeshAgent m_navMeshAgent;
     private int m_cakesSpawned = 0;
+
+    private bool m_isSpawning = false;
     
 
     private bool[] m_ingredientsValidated = null;
@@ -39,8 +39,8 @@ public class OvenBehavior : MonoBehaviour {
         m_ingredientsIn.Add(p_ingredient);
         p_ingredient.go.transform.SetParent(transform);
         p_ingredient.go.transform.localPosition = m_ingredientLocalPosition[NumberOfIngredientsValidated()];
-        
-        CheckForCake();
+
+        if (!CheckForCake()) RunAway();
     }
     
     public void AddIngredients(Ingredient[] p_ingredients) {
@@ -50,15 +50,20 @@ public class OvenBehavior : MonoBehaviour {
             ing.go.transform.SetParent(transform);
             ing.go.transform.localPosition = m_ingredientLocalPosition[(int)ing.type];
         }
-        CheckForCake();
+        if (!CheckForCake()) RunAway();
     }
 
-    private void CheckForCake() {
+    private void RunAway() {
+        SetRandomPathToGo();
+    }
+
+    private bool CheckForCake() {
         foreach (bool bo in m_ingredientsValidated) {
-            if(!bo) return;
+            if(!bo) return false;
         }
         
         StartBaking();
+        return true;
     }
 
     private void StartBaking() {
@@ -70,14 +75,13 @@ public class OvenBehavior : MonoBehaviour {
         //List<Vector3> availblePos = m_potentialSpawnPos.ToList();
         // for (int i = 0; i < m_numberOfCakeToSpawn; i++) { Instantiate(m_prefabCake, availblePos[Random.Range(0, availblePos.Count)], m_prefabCake.transform.rotation);}
         m_cakesSpawned = 0;
+        m_isSpawning = true;
         StartCoroutine(BakingWhileRunning());
     }
 
     private IEnumerator BakingWhileRunning() {
 
-        Vector2 firstCorner = GameManager.singleton.wolrdPosOfFirstCorner;
-        Vector2 lastCorner = GameManager.singleton.wolrdPosOfLastCorner;
-        m_navMeshAgent.destination = new Vector3(Random.Range(firstCorner.x, lastCorner.x), transform.position.y, Random.Range(firstCorner.y, lastCorner.y));
+        SetRandomPathToGo();
 
         yield return new WaitForSeconds(m_spawnInterval);
 
@@ -87,6 +91,13 @@ public class OvenBehavior : MonoBehaviour {
         m_cakesSpawned++;
 
         if (m_cakesSpawned < m_numberOfCakeToSpawn) StartCoroutine(BakingWhileRunning());
+        else m_isSpawning = false;
+    }
+
+    private void SetRandomPathToGo() {
+        Vector2 firstCorner = GameManager.singleton.wolrdPosOfFirstCorner;
+        Vector2 lastCorner = GameManager.singleton.wolrdPosOfLastCorner;
+        m_navMeshAgent.destination = new Vector3(Random.Range(firstCorner.x, lastCorner.x), transform.position.y, Random.Range(firstCorner.y, lastCorner.y));
     }
 
     private int NumberOfIngredientsValidated() {
