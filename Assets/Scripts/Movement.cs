@@ -34,7 +34,14 @@ public class Movement : MonoBehaviour
 
 
     /// <summary/> Update is called once per frame
-    void Update() => m_rigidBody.velocity = SetVelocityFromInput(m_rigidBody.velocity);
+    void Update()  {
+        m_rigidBody.velocity = SetVelocityFromInput(m_rigidBody.velocity);
+
+        if (transform.position.x > 10 || transform.position.x < -10 || transform.position.z > 13 || transform.position.z < -13) {
+            var transform1 = transform;
+            transform1.position = new Vector3(0f, transform1.position.y, 0f);
+        }
+    }
 
     private Vector3 SetVelocityFromInput(Vector3 p_currentVelocity)
     {
