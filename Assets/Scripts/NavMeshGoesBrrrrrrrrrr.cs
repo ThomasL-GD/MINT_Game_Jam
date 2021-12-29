@@ -23,10 +23,16 @@ public class NavMeshGoesBrrrrrrrrrr : MonoBehaviour {
     private NavMeshAgent m_meshAgent = null;
     private bool m_ismTransformToFollowNull;
 
+    private Animator m_animator;
+    private static readonly int JumpDuration = Animator.StringToHash("Jump_Duration");
+    private static readonly int Jump = Animator.StringToHash("Jump");
+
     private void Start() {
         m_ismTransformToFollowNull = m_transformToFollow == null;
         m_meshAgent = GetComponent<NavMeshAgent>();
         m_meshAgent.updateRotation = true;
+        m_animator = GetComponent<Animator>();
+        m_animator.SetFloat(JumpDuration, 1f/m_jumpDuration);
         StartCoroutine(JumpTimer());
     }
 
@@ -50,6 +56,8 @@ public class NavMeshGoesBrrrrrrrrrr : MonoBehaviour {
     private IEnumerator JumpTimer() {
 
         yield return new WaitForSeconds(m_jumpCooldown);
+        
+        m_animator.SetTrigger(Jump);
 
         NavMeshPath path = new NavMeshPath();
         bool pathFound = m_meshAgent.CalculatePath(m_transformToFollow.position, path);
