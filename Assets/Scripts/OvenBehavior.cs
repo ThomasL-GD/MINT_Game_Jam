@@ -93,6 +93,7 @@ public class OvenBehavior : MonoBehaviour {
         GameObject go = Instantiate(m_prefabCake, transform1.position, transform1.rotation);
         go.GetComponent<NavMeshGoesBrrrrrrrrrr>().m_transformToFollow = GameManager.singleton.m_chefTransform;
         m_cakesSpawned++;
+        GameManager.singleton.ChangeScore(1);
 
         if (m_cakesSpawned < m_numberOfCakeToSpawn) StartCoroutine(BakingWhileRunning());
         else m_isSpawning = false;

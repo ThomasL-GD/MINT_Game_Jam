@@ -35,15 +35,8 @@ public class GameManager : MonoBehaviour {
     [SerializeField] private GameObject[] m_visualHealthPoints;
 
     [SerializeField] private TextMeshProUGUI m_scoreMesh = null;
-
-    public int score {
-        get { return score; }
-        set {
-            m_scoreMesh.text = value.ToString();
-            score = value;
-        }
-    }
-
+    private int m_score = 0;
+    
     [HideInInspector] private int m_currentHealth = 3;
     
 
@@ -96,8 +89,6 @@ public class GameManager : MonoBehaviour {
                 m_visualHealthPoints[i].SetActive(false);
             }
         }
-
-        score = 0;
     }
 
     private void Start() {
@@ -202,8 +193,12 @@ public class GameManager : MonoBehaviour {
     public void LoseHp() {
         m_currentHealth --;
 
-        BlinkAndDestroy script = m_visualHealthPoints[m_currentHealth].AddComponent<BlinkAndDestroy>();
-        script.isActuallyKilling = false;
+        m_visualHealthPoints[m_currentHealth].SetActive(false);
+    }
+
+    public void ChangeScore(int p_scoreToAdd) {
+        m_score += p_scoreToAdd;
+        m_scoreMesh.text = "x " + m_score.ToString();
     }
 
     

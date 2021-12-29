@@ -10,8 +10,6 @@ public class BlinkAndDestroy : MonoBehaviour {
     public float m_blinkTime = 0.2f;
     private Vector3 m_spreadDirection = Vector3.up;
     public float m_speed = 1f;
-
-    public bool isActuallyKilling = true;
     
     private bool m_isTransparent = false;
 
@@ -40,7 +38,6 @@ public class BlinkAndDestroy : MonoBehaviour {
     private IEnumerator DeathCountDown() {
         yield return new WaitForSeconds(m_lifeTime);
         
-        if(isActuallyKilling)Destroy(gameObject);
-        else gameObject.SetActive(false);
+        Destroy(gameObject);
     }
 }
