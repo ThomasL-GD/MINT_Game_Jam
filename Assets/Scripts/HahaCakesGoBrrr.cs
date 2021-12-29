@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using Random = UnityEngine.Random;
 
 public class HahaCakesGoBrrr : MonoBehaviour
@@ -19,6 +20,12 @@ public class HahaCakesGoBrrr : MonoBehaviour
     private float m_timeBetweenCakes = .1f;
 
 
+    [SerializeField, Tooltip("the high score audio source")]
+    private AudioSource m_highScoreAudio;
+    
+    [SerializeField, Tooltip("the cake adding sound audio source")]
+    private AudioSource m_cakeAudio;
+    
     private void Start()
     {
         FunctionToMakeCakesGoBrr(PlayerPrefs.GetInt("LastScore"));
@@ -28,10 +35,14 @@ public class HahaCakesGoBrrr : MonoBehaviour
     {
         String highScoreText = PlayerPrefs.GetInt("NewHighScore") == 0 ? $" High Score : {PlayerPrefs.GetInt("HighScore")}" : "New High Score !";
         
-        m_text.text = $"Game Over\nScore {p_score}\n{highScoreText}";
+        if(PlayerPrefs.GetInt("NewHighScore") == 1)m_highScoreAudio.Play();
+        
+        m_text.text = $"Game Over\nScore {0}\n{highScoreText}";
         StartCoroutine(MakeCakesGoBr(p_score));
     }
 
+    private bool m_canRestart = false;
+    
     IEnumerator MakeCakesGoBr(int pScore)
     {
         int cakesBrrrd = 0;
@@ -40,13 +51,28 @@ public class HahaCakesGoBrrr : MonoBehaviour
             yield return new WaitForSeconds(m_timeBetweenCakes);
             Vector3 position = new Vector3(m_rect.x + Random.Range(m_rect.xMin, m_rect.xMax), 0, m_rect.y + Random.Range(m_rect.yMin, m_rect.yMax));
 
+
+            
             if (Physics.SphereCast(position + Vector3.up * 100f,0.62f, Vector3.down, out RaycastHit hit, 150f))
             {
                 Instantiate(m_cakePrefab, hit.point + Vector3.up * 0.275f, m_cakePrefab.transform.rotation);
             }
 
             cakesBrrrd++;
+            String highScoreText = PlayerPrefs.GetInt("NewHighScore") == 0 ? $" High Score : {PlayerPrefs.GetInt("HighScore")}" : "New High Score !";
+            
+            if(PlayerPrefs.GetInt("NewHighScore") == 1)m_highScoreAudio.Play();
+            else m_cakeAudio.Play();
+            
+            m_text.text = $"Game Over\nScore {cakesBrrrd}\n{highScoreText}";
         }
+
+        m_canRestart = true;
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Mouse0)) SceneManager.LoadScene(1);
     }
 
     private void OnDrawGizmosSelected()
