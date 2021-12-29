@@ -41,7 +41,9 @@ public class NavMeshGoesBrrrrrrrrrr : MonoBehaviour {
 
     private void Update() {
         if (m_ismTransformToFollowNull) return;
-        
+#if UNITY_EDITOR
+        if(!m_meshAgent.isOnNavMesh) Debug.LogWarning("IT IS HERE THAT THE CHANGE NEEDS TO BE DONE ! CALL BLUE !", this);
+#endif
         if (!m_isJumping) return;
         
         m_jumpElapsedTime += Time.deltaTime;
@@ -77,6 +79,10 @@ public class NavMeshGoesBrrrrrrrrrr : MonoBehaviour {
                 }
             }
 
+            if (desiredIndex >= path.corners.Length) {
+                desiredIndex = 0;
+                transform.position = new Vector3(0f, transform.position.y, 0f);
+            }
             Vector3 cornerPos = path.corners[desiredIndex];
 
             Vector3 position = transform.position;
@@ -92,17 +98,4 @@ public class NavMeshGoesBrrrrrrrrrr : MonoBehaviour {
         StartCoroutine(JumpTimer());
         
     }
-
-    /*
-    private void OnCollisionEnter(Collision p_other) {
-        Debug.Log("1");
-        if (p_other.gameObject.layer == 8) {
-            Debug.Log("2");
-            if (p_other.gameObject.TryGetComponent(out OvenBehavior script)) {
-                Debug.Log("3");
-                script.RunAway(true);
-                
-            }
-        }
-    }*/
 }
